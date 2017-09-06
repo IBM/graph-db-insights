@@ -41,8 +41,8 @@ In this journey we will demonstrate:
 Create a Kubernetes cluster with [IBM Bluemix Container Service](https://github.com/IBM/container-journey-template) to deploy in cloud.Deploy orientdb on kubernetes container using [Deploy Orientdb on container]( https://github.com/IBM/deploy-graph-db-container). 
 
 # Watch the Video
-The Video Tutorial gives a head start on how to play around with orientdb studio.
-[![](doc/source/images/orientdb-youtube)](https://youtu.be/l-OVSjf-vk0)
+[Orientdb Studio Tutorial](https://youtu.be/l-OVSjf-vk0) gives a head start on how to play around with orientdb studio.
+
 
 # Steps
 
@@ -55,7 +55,7 @@ described in detail below.
 1. [Orientdb Console ](#3-Orientdb-Console )
 1. [Orientdb Gremlin Console ](#4-Orientdb-Gremlin-Console )
 1. [Orientdb Studio](#5-Orientdb-Studio)
-1. [PyOrient](#6-PyOrient-Python-Driver-for-orientdb))
+1. [PyOrient](#6-PyOrient-Python-Driver-for-orientdb)
 1. [Sign up for the Data Science Experience](#7-sign-up-for-the-data-science-experience)
 1. [Create the notebook](#8-create-the-notebook)
 1. [Add the data](#9-add-the-data)
