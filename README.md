@@ -1,4 +1,4 @@
-# Graph-db-insights
+# Graph-db-insights(work in progress!)
 Graph databases are well-suited for analyzing interconnections, which is why there has been a lot of interest in using graph databases to mine data from social media. Graph databases are also useful for working with data in business disciplines that involve complex relationships and dynamic schema, such as supply chain management, identifying the source of an IP telephony issue and creating "customers who bought this also looked at..." recommendations.This journey aims to give hands on experience to developers, Data Analysts, Data Scientist who wants to work with graph database for their business needs.This tutorial gives you a head start to a graphdb-Orientdb.This journey will help developers get started with orientdb using both sql and gremlin- which is a specialised query language for property graphs  by Apache Tinkerpop that works on all major graph databases.
 
 In this journey we will demonstrate:
