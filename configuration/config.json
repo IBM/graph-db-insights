@@ -1,0 +1,48 @@
+{
+	"Database_name": "demo",
+	"username": "root",
+	"password": "root",
+	"host": "localhost",
+	"port": 2424,
+	"vertex_class": {
+		"person": {
+			"name": "String",
+			"role": "String",
+			"fblikes": "Float"
+		},
+		"movie": {
+			"title": "String",
+			"year": "Integer",
+			"imdbRating": "Float",
+			"durationInMins": "Integer",
+			"genre": "String",
+			"plotKeywords": "String",
+			"numCriticForReviews": "Integer",
+			"movieFacebookLikes": "Float"
+		}
+	},
+	"edge_class": {
+		"acted_in": {
+			"in":{
+        			"Type": "Link",
+        			"Linked_Class": "movie"
+             },
+		  "out" :{
+        			"Type": "Link",
+        			"Linked_Class": "person"
+		        }
+	},
+	"worked_with": {
+			"in":{
+        			"Type": "Link",
+        			"Linked_Class": "person"
+             },
+		  "out" :{
+        			"Type": "Link",
+        			"Linked_Class": "person"
+		        }
+
+		}
+
+	}
+}
