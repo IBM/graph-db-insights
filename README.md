@@ -11,12 +11,14 @@ In this journey we will demonstrate:
 
 ![](doc/source/images/architecture.png)
 
-1. The Object storage stores the data.
-2. Data is utilized as csv files.
-3. The Jupyter notebook processes the data and generates insights.
-4. The Jypyter notebook is powered by Spark.
-5. The Node-RED hosts a websocket server that is a medium of communication between the Jupyter notebook on IBM DSX and Web UI.
-6. The Node-RED hosts a web server that renders the Web UI.
+1. The Kuberntes Cluster on which orientdb is running.
+2. Orientdb instance on kubernetes.
+3. Object storage stores the config file and kaggle imdb data.
+4  config file and data used in the jupyter notebook.
+5. The Jupyter notebook processes the data and generates insights.It can viewed in orientdb Studio.
+6. The Jypyter notebook is powered by Spark.
+ 
+
    
 ## Included components
 
