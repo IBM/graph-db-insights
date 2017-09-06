@@ -1,27 +1,13 @@
-# Orchestration of the analytics workflow in IBM Data Science Experience(DSX) using a custom web user-interface built with Node-RED 
+# graph-db-insights
+Graph databases are well-suited for analyzing interconnections, which is why there has been a lot of interest in using graph databases to mine data from social media. Graph databases are also useful for working with data in business disciplines that involve complex relationships and dynamic schema, such as supply chain management, identifying the source of an IP telephony issue and creating "customers who bought this also looked at..." recommendations.This journey aims to give hands on experience to developers, Data Analysts, Data Scientist who wants to work with graph database for their business needs.This tutorial gives you a head start to a graphdb-Orientdb.This journey will help developers get started with orientdb using both sql and gremlin- which is a specialised query language for property graphs  by Apache Tinkerpop that works on all major graph databases.
 
-IBM Data Science Experience can be used to analyze data using Jupyter notebooks. There is no mechanism exposed by Data Science Experience to trigger execution of the notebook cells from outside. If this capability is added, we can build a complete end to end analytics solution using IBM Data Science Experience.
+In this journey we will demonstrate:
 
-This journey addresses two requirements:
-* Trigger the execution of Python code in a Jupyter Notebook on IBM Data Science Experience from a custom web user interface
-* Visualize the response from the Python code execution in a Jupyter Notebook on IBM Data Science Experience on the custom web user interface
-
-In this developer journey we will demonstrate the use of Node-RED to invoke the analytics workflows in Jupyter notebooks on IBM Data Science experience and also to render a custom web user-interface with minimal programming. 
-
-#### What is Node-RED?
-Node-RED is a tool for wiring together APIs and online services on Bluemix. The APIs and online services are configured as nodes that can be wired to orchestrate a workflow. It is also a web server where the UI solution can be deployed. It has nodes that support integration with many database services, watson services and analytics services.
-
-Node-RED reduces a lot of development effort. It is easy to improve the solution using other services with Node-RED. It opens a world of possibilities for developers. 
-
-When the reader has completed this journey, they will understand how to:
-
-* Create and run a Jupyter notebook in DSX.
-* Use DSX Object Storage to access data files.
-* Use Python Pandas to derive insights on the data.
-* Develop a custom web user interface using Node-RED. 
-* Triggering an analytics workflow on DSX from the UI using Node-RED.
-
-The intended audience for this journey are developers who want to develop a complete analytics solution on DSX with a custom web user interface. 
+* a brief introduction to graph theory, just so developers can appreciate graph theory.
+* Introduction to graph database - OrientDb
+* Hands-on on the crud operations and traversal on graph database using gremlin and sql on orientdb Console.
+* How to get insights out of it on orientdb console, orientdb studio as well as ipython notebook.
+* Visualisation of the results. 
 
 ![](doc/source/images/architecture.png)
 
@@ -34,7 +20,7 @@ The intended audience for this journey are developers who want to develop a comp
    
 ## Included components
 
-* [Node-RED](https://console.bluemix.net/catalog/starters/node-red-starter): Node-RED is a programming tool for wiring together APIs and online services.
+* [Orientdb](http://orientdb.com/orientdb/): A Multi-Model Open Source NoSQL DBMS.
 
 * [IBM Data Science Experience](https://apsportal.ibm.com/analytics): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
 
@@ -42,90 +28,271 @@ The intended audience for this journey are developers who want to develop a comp
 
 * [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
 
+* [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
+
+* [Bluemix container service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
+
 ## Featured technologies
 
 * [Data Science](https://medium.com/ibm-data-science-experience/): Systems and scientific methods to analyze structured and unstructured data in order to extract knowledge and insights.
 
+## Prerequisite
+
+Create a Kubernetes cluster with [IBM Bluemix Container Service](https://github.com/IBM/container-journey-template) to deploy in cloud.Deploy orientdb on kubernetes container using [Deploy Orientdb on container]( https://github.com/IBM/deploy-graph-db-container). 
 
 # Watch the Video
-
-[![](http://img.youtube.com/vi/wRnKYhVim20/0.jpg)](https://youtu.be/wRnKYhVim20)
+The Video Tutorial gives a head start on how to play around with orientdb studio.
+[![](doc/source/images/orientdb-youtube)](https://youtu.be/l-OVSjf-vk0)
 
 # Steps
 
 Follow these steps to setup and run this developer journey. The steps are
 described in detail below.
 
-1. [Sign up for the Data Science Experience](#1-sign-up-for-the-data-science-experience)
-1. [Create Bluemix services](#2-create-bluemix-services)
-1. [Import the Node-RED flow](#3-import-the-node-red-flow)
-1. [Note the websocket URL](#4-note-the-websocket-url)
-1. [Update the websocket URL](#5-update-the-websocket-url)
-1. [Create the notebook](#6-create-the-notebook)
-1. [Add the data](#7-add-the-data)
-1. [Update the notebook with service credentials](#8-update-the-notebook-with-service-credentials)
-1. [Run the notebook](#9-run-the-notebook)
-1. [Analyze the results](#10-analyze-the-results)
 
-## 1. Sign up for the Data Science Experience
+1. [Brief Introduction to the Graph Theory](#1-Brief-Introduction-to-the-Graph-Theory)
+1. [Orientdb-a multi model database.](#2-Orientdb-a-multi-model-database.)
+1. [Orientdb Console ](#3-Orientdb-Console )
+1. [Orientdb Gremlin Console ](#4-Orientdb-Gremlin-Console )
+1. [Orientdb Studio](#5-Orientdb-Studio)
+1. [PyOrient(Python Driver for orientdb)](#6-PyOrient(Python Driver for orientdb))
+1. [Sign up for the Data Science Experience](#7-sign-up-for-the-data-science-experience)
+1. [Create the notebook](#8-create-the-notebook)
+1. [Add the data](#9-add-the-data)
+1. [Update the notebook with service credentials](#10-update-the-notebook-with-service-credentials)
+1. [Run the notebook](#11-run-the-notebook)
+
+
+
+## 1. Brief Introduction to the Graph Theory
+Every day we are surrounded by countless connections and networks: roads and rail tracks, phone lines and the internet, electronic circuits and even molecular bonds. There are also social networks between friends and families. All these systems consist of certain points, called nodes/vertices, connected by lines, called edges(link between two nodes). All these networks are called Graphs.
+
+In the domain of mathematics and computer science, graph theory is the study of graphs that concerns with the relationship among edges and vertices. It is a popular subject having its applications in computer science, information technology, biosciences, mathematics, and linguistics to name a few. 
+Formally, a graph is a pair of sets (V, E), where V is the set of vertices and E is the set of edges, connecting the pairs of vertices. Take a look at the following graph −
+
+![](doc/source/images/graph-example.jpg) 
+
+In the above graph,
+V = {a, b, c, d, e}
+E = {ab, ac, bd, cd, de}
+ 
+A graph is composed of two elements: a node and a relationship(edges).Each node represents an entity (a person, place, thing, category or other piece of data), and each relationship represents how two nodes are associated. This general-purpose structure allows you to model all kinds of scenarios – from a system of roads, to a network of devices, to a population’s medical history or anything else defined by relationships.
+
+## 2. Orientdb-a multi model database.
+Orientdb is a Multi-Model Open Source NoSQL DBMS that combines the power of graphs with documents, key/value, reactive, object-oriented and geospatial models into one scalable, high-performance operational database.Because of the ubiquitous nature of the SQL in the world of Database developers.Developers are familiar and comfortable with SQL. Therefore, Instead of inventing new query language Orientdb extended sql to support more complex graph concepts like Trees and Graphs. Apart from sql, It provides the APIs and Drivers for Python, Java, Javascript, NodeJs, PHP, .NET and Gremlin- A specialised query language for property graphs. To know more about what are graph databases? and what are property graphs? , you can go through these links :
+[Orientdb](http://orientdb.com/graph-database/)
+[Property Graph](https://github.com/tinkerpop/gremlin/wiki/Defining-a-Property-Graph)
+
+
+## 3. Orientdb Console 
+Demonstrating the following operations in gremlin and sql on console -
+ 1. Accessing the console.
+ 2. Creating and connecting database 
+ 3. Creating Node classes, Edge classes and their properties.
+ 4. Creating vertex.
+ 5. Creating and edge between the two vertex.
+ 6. Retrieving edge/vertex  based on a condition.
+ 7. Updating an edge/vertex.
+ 8. Deleting an edge/vertex.
+ 9. Insights
+
+### 1. Accessing the console.
+  * In the bin folder of orientdb run `./console.sh` on the terminal to access the orientdb console.To access the gremlin console run `./gremlin.sh`.
+  
+    ![](doc/source/images/orientdb-console.png)
+ 
+ 
+### 2. connecting to server and Creating database 
+  * on the orientdb console run CONNECT remote:<ip-of-the-orientdb-kubernetes-cluster> <username> <password> 
+   
+   ![](doc/source/images/connect-console.png)
+   
+  * You are connected to the server now , let’s create a new database. To create type create database remote:localhost/<name-of-the-database> <username> <password> plocal graph
+  
+    ![](doc/source/images/create-database.png)
+   
+  * To verify that you are connected to orientdb, type command LIST DATABASES and you should see the databases present in the orientdb.
+  
+    ![](doc/source/images/list-databases.png)
+  
+  * on the gremlin console run g = new OrientGraph("remote:<ip-of-the-orientdb-kubernetes-cluster>/<database-name>");
+    
+    ![](doc/source/images/connect-gremlin-console.png)
+
+### 3. Creating Node classes, Edge classes and their properties.
+For this tutorial, I have created  two vertex classes namely - Person and Movie. With Person’s attributes/ Properties :  Role: Director/ActorName, Fb-likes and Movie’s Attribute: Title, Year, IMDB rating, Duration, Language, Genre, Plot keywords, Num_critic_for_reviews, movie_facebook_likes. And two Edge classes - acted_in and worked_with.
+
+* To create vertex class, on your console type  create class <classname> extends V
+    create class person extends V
+    create class movie extends V
+        
+![](doc/source/images/create-node-class.png)
+
+* To create property of the vertex class, run this command : 
+Create property <class-name>.<name-of-the-property>  IF NOT EXISTS   TYPE.  
+
+![](doc/source/images/create-property-node-class.png)
+
+* Creating Edge Class.
+To create edge class, on your console type : create class <classname> extends E.
+  
+![](doc/source/images/create-edge-class.png)
+  
+* Edges have two ends.It always start from one vertex class and ends on another vertex.Its acts as a bridge between two vertices.Hence, The edge will always have in and out property. To create property of the Edge class, run this command :
+        Create property <class-name>.in  IF NOT EXISTS  Link  <linked_vertex_class>  
+        Create property <class-name>.out  IF NOT EXISTS Link  <linked_vertex_class>
+Example :
+
+![](doc/source/images/create-property-edge-class-in.png)
+
+![](doc/source/images/create-property-edge-class-out.png)
+
+
+* Run these commands to create node classes, edge classes and their respective properties. 
+ 
+### 4. Creating Records/Vertex / Inserting
+* To create records in the orientdb, run the following command on your console :
+INSERT INTO  <vertex-class-name> (<class-property-1>,<class-property-2>, <class-property-3>......) VALUES (value1,value2,value3 ………...)
+Example :
+INSERT INTO person (name, fblikes, role) VALUES ("Scarlett Johansson",19000.0,"actor")
+
+
+![](doc/source/images/create-vertex.png)
+
+
+### 5. Creating Relation/Edge between the two vertices:
+* Run the following command on your console  to create relation/edge between two vertices.Please Note! Since orientdb is a nosql database, You can use edge class which has already been created or you can give any name to your relation and orientdb will automatically create a new edge class with that name. Before running this command, make sure the vertices you are trying to connect with this edge are already present.Otherwise, it will throw an error. Check the screenshot below, Before running the create edge command, I have created two nodes I want to connect, vertex/node with name CCH Pounder and Joel David Moore.
+Syntax:
+create edge <give-name-of-the-relation> from (select from person where name = "name-of-the-vertex") to (select from person where name = "name-of-the-vertex")
+Example :
+create edge worked_with from (select from person where name = "CCH Pounder") to (select from person where name = "Joel David Moore")
+
+![](doc/source/images/create-edge.png)
+
+### 6. Retrieving edge/vertex  based on a condition.
+* Use SELECT in orientdb, Similar to the select in sql to retrieve data on a particular condition. Suppose, You want to retrieve the fblikes of an actor with name Scarlett Johansson.
+Syntax : select <whichever-parameter-you-want-retrieve> from <name-of-the-class> where <condition>
+Example : select fblikes from person where name = "Scarlett Johansson"
+ 
+![](doc/source/images/retrieve-vertex.png)
+
+### 7. Updating an edge/vertex.
+* To update class or record, the syntax is :
+UPDATE <class>|CLUSTER:<cluster>|<recordID>
+ [SET|INCREMENT|ADD|REMOVE|PUT <field-name> = <field-value>[,]*]|[CONTENT|MERGE <JSON>]
+ [UPSERT]
+ [RETURN <returning> [<returning-expression>]]
+ [WHERE <conditions>]
+ [LOCK default|record]
+ [LIMIT <max-records>] [TIMEOUT <timeout>]
+Example : To update a role of a person where name is "Scarlett Johansson" from actor to director --
+UPDATE person SET role='director' UPSERT where name = "Scarlett Johansson"
+
+![](doc/source/images/update-record.png)
+
+### 8. Deleting an edge/vertex.
+* Deleting an edge/vertex.
+DELETE EDGE
+You can delete one or more edges from the database. Use this command if you work against graphs. The "Delete edge" command takes care to remove all the cross references to the edge in both "in" and "out" vertices.
+Syntax
+DELETE EDGE <rid>|[<rid> (, <rid>)*]|FROM <rid>|TO <rid>|[<class>] [WHERE <conditions>]> [LIMIT <MaxRecords>]
+Example :
+DELETE edge worked_with from (select from person where name = "CCH Pounder") to (select from person where name = "Joel David Moore")
+
+![](doc/source/images/delete-edge.png)
+
+* DELETE VERTEX        
+You can  delete one or more vertices from the database. Use this command if you work against graphs. The "Delete Vertex" (like the Delete Edge) command takes care to remove all the cross references to the vertices in all the edges involved.
+Syntax:
+DELETE VERTEX <rid>|<class>|FROM (<subquery>) [WHERE <conditions>] [LIMIT <MaxRecords>>]
+Example :
+DELETE VERTEX from person where name = "Scarlett Johansson"
+
+
+![](doc/source/images/delete-vertex.png)
+
+### 9. Insights
+You created and populated a small graph of movie dataset.To cross edges, you can use special graph functions, such as:
+* OUT() To retrieve the adjacent outgoing vertices
+* IN() To retrieve the adjacent incoming vertices
+* BOTH() To retrieve the adjacent incoming and outgoing vertices
+For example, To know with who all Johnny Depp ‘worked_with’  --- ( his co-workers)
+SELECT out('worked_with') FROM person WHERE name = 'Johnny Depp'
+
+![](doc/source/images/insights.png)
+
+## 4. Orientdb Gremlin Console 
+* To access the gremlin console run `./gremlin.sh`.
+  ![](doc/source/images/orientdb-gremlin-console.png)
+  
+* Connecting to orientdb:
+  To open a database on a remote server. Assure the server is up and running. To start the server just launch server.sh.
+    g = new OrientGraph("remote:<ip-of-the-kubernetes-cluster>/<database-name>");
+    ![](doc/source/images/connect-to-database-gremlin.png)
+  
+* Creating vertex, To create a new vertex use the addVertex() method. The vertex will be created and the unique id will be displayed as return value.: run g.addVertex();
+![](doc/source/images/add-vertex.png)
+
+* Creating an edge :
+To create a new edge between two vertices use the addEdge(v1, v2, label) method. The edge will be created with the label specified.
+v1 = g.addVertex();
+v2 = g.addVertex();
+e = g.addEdge(v1, v2, 'worked_with');
+
+![](doc/source/images/create-edge-gremlin.png)
+
+* Display all the vertices present in the database :
+ Use g.V method to do so!
+ 
+![](doc/source/images/display-all-vertices-gremlin.png)
+
+* Get a vertex with a particular id :
+        To retrieve a vertex by its ID, use the v(id) method passing the record id as argument (with or without the prefix '#').Run : g.v('18:1')
+![](doc/source/images/display-all-vertices-gremlin.png)
+
+* Retrieve all the edges present in the graph :
+        To retrieve all the edges present in the graph, use g.E method.
+![](doc/source/images/display-all-edges-gremlin.png)
+
+* Traversal
+Gremlin is  very powerful in traversing graphs. Once you have a graph loaded in your database you can traverse it in many ways.
+Basic Traversal
+To display all the outgoing edges of the first vertex , use the .outE at the vertex. Example: v1.outE
+
+![](doc/source/images/traversal-gremlin-outgoing-edges.png)
+
+And to display all the incoming edges of the second vertex, use .inE method. Example v2.inE
+
+![](doc/source/images/traversal-gremlin-incoming-edges.png)
+
+* Filter results
+For example , if you want to return all the outgoing edges of all the vertices with label equals to 'worked_with’
+g.V.outE('worked_with')
+
+![](doc/source/images/traversal-gremlin-incoming-edges.png)
+
+
+## 5. Orientdb Studio
+
+![](doc/source/images/orientdb-studio.png)
+
+* open the browser and hit http://<ip-address-of-the-kubernetes-cluster>:<node-port mapped to port 2480 of orientdb>/ to access orientdb  
+* Select the database you want to work on from dropdown. Using login credentials- the username and the password for orientdb to login. 
+* Follow the video tutorial [Orientdb Studio Tutorial](https://youtu.be/l-OVSjf-vk0) on how to perform various operations on orientdb.
+* All the commands discussed in the orientdb console part of the tutorial can be executed in the browse section of orientdb.The result can be viewed in the table/raw(json) format. And can also be exported to csv file.To export the result to csv, In the browse section click the setting button. And then run the query.
+
+![](doc/source/images/orientdb-studio-query-settings.png)
+
+## 6. PyOrient(Python Driver for orientdb)
+The orientdb can also accessed through python using pyorient.If you are using the Data Science Experience ( DSX) , set up the orientdb on kubernetes is important.This is because if you set up the orientdb locally, you won’t able to access it through DSX, as the orientdb console port 2424 and orientdb studio 2480 wouldn’t be exposed on bluemix.Deploy orientdb on kubernetes container using [Deploy Orientdb on Kubernetes]( https://github.com/IBM/deploy-graph-db-container) will expose the ports on bluemix through which orientdb can be accessed from the notebook on data science experience.You can use the ip-address of your cluster and node port on which the port 2424 orientdb console is mapped, to access that orientdb through notebook.Notebook's markdown and comments are self explanatory to make you understand its functioning.
+
+Set up the Notebook on Data Science experience with object storage using following steps :
+
+## 7. Sign up for the Data Science Experience
 
 Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By signing up for the Data Science Experience, two services: ``DSX-Spark`` and ``DSX-ObjectStore`` will be created in your Bluemix account.
 
-## 2. Create Bluemix services
-
-* Create the [Node-RED Starter application](https://console.bluemix.net/catalog/starters/node-red-starter).
-* Choose an appropriate name for the Node-RED application - `App name:`.
-* Click on `Create`.
-
-  * [**Node-RED Starter**](https://console.bluemix.net/catalog/starters/node-red-starter)
-  
-  ![](doc/source/images/bluemix_service_nodered.png)
-  
-  * On the newly created Node-RED application page, Click on `Visit App URL` to launch the Node-RED editor once the application is in `Running` state.
-  * On the `Welcome to your new Node-RED instance on IBM Bluemix` screen, Click on `Next`.
-  * On the `Secure your Node-RED editor` screen, enter a username and password to secure the Node-RED editor and click on `Next`.
-  * On the `Browse available IBM Bluemix nodes` screen, click on `Next`.
-  * On the `Finish the install` screen, click on Finish.
-  * Click on `Go to your Node-RED flow editor`.  
-  
-## 3. Import the Node-RED flow
-* [Clone this repo](https://github.com/IBM/node-red-dsx-workflow).
-* Navigate to the [orchestrate_dsx_workflow.json](https://github.com/IBM/node-red-dsx-workflow/blob/master/node-red-flow/orchestrate_dsx_workflow.json).
-* Open the file with a text editor and copy the contents to Clipboard.
-* On the Node-RED flow editor, click the Menu and select `Import -> Clipboard` and paste the contents.
-
- ![](doc/source/images/import_nodered_flow.png)
- <br/>
- <br/>
- 
- #### Deploy the Node-RED flow by clicking on the `Deploy` button
-
-![](doc/source/images/deploy_nodered_flow.png)
-
-## 4. Note the websocket URL
-
-![](doc/source/images/note_websocket_url.png)
-
-The websocket URL is ws://`<NODERED_BASE_URL>`/ws/orchestrate  where the `NODERED_BASE_URL` is the marked portion of the URL in the above image.
-### Note:
-An example websocket URL for a Node-RED app with name `myApp` is `ws://myApp.mybluemix.net/ws/orchestrate`, where `myApp.mybluemix.net` is the NODERED_BASE_URL. 
-
-The NODERED_BASE_URL may have additional region information i.e. `eu-gb` for the UK region. In this case NODERED_BASE_URL would be: `myApp.eu-gb.mybluemix.net`. 
-
-## 5. Update the websocket URL in HTML code
-Click on the node named `HTML`.
-![](doc/source/images/html_node.png)
-
-Click on the HTML area and search for `ws:` to locate the line where the websocket URL is specified. 
-Update the websocket URL with the base URL that was noted in the [Section 4](#4-note-the-websocket-url): 	
-
-	var websocketURL = "ws://NODERED_BASE_URL/ws/orchestrate";
-	
-![](doc/source/images/update_html_websocket_url.png)
-
-Click on `Done` and re-deploy the flow.
-
-## 6. Create the notebook
+## 8. Create the notebook
 
 * Open [IBM Data Science Experience](https://apsportal.ibm.com/analytics). 
 * Use the menu on the top to select `Projects` and then `Default Project`.
@@ -133,41 +300,33 @@ Click on `Done` and re-deploy the flow.
 * Select the `From URL` tab.
 * Enter a name for the notebook.
 * Optionally, enter a description for the notebook.
-* Enter this Notebook URL: https://github.com/IBM/node-red-dsx-workflow/blob/master/notebooks/node_red_dsx_workflow.ipynb
+* Enter this Notebook URL: https://github.com/IBM/graph-db-insights/notebooks/Graphdb-Insights.ipynb
 * Click the `Create Notebook` button.
 
-![](doc/source/images/create_notebook_from_url.png)
+## 9. Add the data 
 
-## 7. Add the data 
-
-#### Add the data to the notebook
-* Please download the files - summer.csv and dictionary.csv from :
-https://www.kaggle.com/the-guardian/olympic-games.
-* Rename the file `summer.csv` to `olympics.csv`
+##### Add the data to the notebook
+* Please download the files from :
+ https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset .
+* Trim the data to 600 rows for the purpose of this tutorial and Rename the file  `Graphdb-Insights.csv`
 * From your project page in DSX, click `Find and Add Data` (look for the `10/01` icon)
 and its `Files` tab. 
-* Click `browse` and navigate to where you downloaded`olympics.csv` and `dictionary.csv` on your computer.
+* Click `browse` and navigate to `Graphdb-Insights.csv` on your computer.
 * Add the files to Object storage.
+* Repeat the above Steps for `config.json` as well.
 
 ![](doc/source/images/add_file.png)
 
-## 8. Update the notebook with service credentials and websocket URL
+## 10. Update the notebook with service credentials.
 
-#### Add the Object Storage credentials to the notebook
+##### Add the Object Storage credentials to the notebook
 * Select the cell below `2.1 Add your service credentials for Object Storage` section in the notebook to update the credentials for Object Store. 
 * Use `Find and Add Data` (look for the `10/01` icon) and its `Files` tab. You should see the file names uploaded earlier. Make sure your active cell is the empty one created earlier. 
-* Select `Insert to code` below olympics.csv.
+* Select `Insert to code` below Graphdb-Insights.csv as pandas Dataframe.
 * Click `Insert Crendentials` from the drop down menu.
-* If the credentials are written as `credential_2` change them to `credentials_1`.
+* Repeat the above steps for `config.json`.
 
-![](doc/source/images/objectstorage_credentials.png)
-
-#### Update the websocket URL in the notebook
-* In the cell below `6. Expose integration point with a websocket client` , update the websocket url noted in [section 4](#4-note-the-websocket-url) in the `start_websocket_listener` function.
-
-![](doc/source/images/update_websocket_url.png)
-
-## 9. Run the notebook
+## 11. Run the notebook
 
 When a notebook is executed, what is actually happening is that each code cell in
 the notebook is executed, in order, from top to bottom.
@@ -193,15 +352,7 @@ There are several ways to execute the code cells in your notebook:
     panel. Here you can schedule your notebook to be executed once at some future
     time, or repeatedly at your specified interval.
 
-For this Notebook, you can simply `Run All` cells.
-The websocket client will be started when you run the cell under `7. Start websocket client`. This will start the communication between the UI and the Notebook.
-
-## 10. Analyze the results
-
-The UI can be accessed at the URL: http://`<NODERED_BASE_URL>`/dsxinsights. 
-The `<NODERED_BASE_URL>` is the base URL noted in section [Note the websocket URL](#4-note-the-websocket-url).
-
-![](doc/source/images/analyze_results.png)
+For this Notebook, To run every cell one by one is recommended. It will give a better understanding on how things are working.
 
 # Troubleshooting
 
