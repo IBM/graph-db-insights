@@ -1,4 +1,4 @@
-# graph-db-insights
+# Graph-db-insights
 Graph databases are well-suited for analyzing interconnections, which is why there has been a lot of interest in using graph databases to mine data from social media. Graph databases are also useful for working with data in business disciplines that involve complex relationships and dynamic schema, such as supply chain management, identifying the source of an IP telephony issue and creating "customers who bought this also looked at..." recommendations.This journey aims to give hands on experience to developers, Data Analysts, Data Scientist who wants to work with graph database for their business needs.This tutorial gives you a head start to a graphdb-Orientdb.This journey will help developers get started with orientdb using both sql and gremlin- which is a specialised query language for property graphs  by Apache Tinkerpop that works on all major graph databases.
 
 In this journey we will demonstrate:
@@ -55,7 +55,7 @@ described in detail below.
 1. [Orientdb Console ](#3-Orientdb-Console )
 1. [Orientdb Gremlin Console ](#4-Orientdb-Gremlin-Console )
 1. [Orientdb Studio](#5-Orientdb-Studio)
-1. [PyOrient(Python Driver for orientdb)](#6-PyOrient(Python Driver for orientdb))
+1. [PyOrient](#6-PyOrient-Python-Driver-for-orientdb))
 1. [Sign up for the Data Science Experience](#7-sign-up-for-the-data-science-experience)
 1. [Create the notebook](#8-create-the-notebook)
 1. [Add the data](#9-add-the-data)
@@ -96,13 +96,13 @@ Demonstrating the following operations in gremlin and sql on console -
  8. Deleting an edge/vertex.
  9. Insights
 
-### 1. Accessing the console.
+#### 1. Accessing the console.
   * In the bin folder of orientdb run `./console.sh` on the terminal to access the orientdb console.To access the gremlin console run `./gremlin.sh`.
   
     ![](doc/source/images/orientdb-console.png)
  
  
-### 2. connecting to server and Creating database 
+#### 2. connecting to server and Creating database 
   * on the orientdb console run CONNECT remote:<ip-of-the-orientdb-kubernetes-cluster> <username> <password> 
    
    ![](doc/source/images/connect-console.png)
@@ -119,7 +119,7 @@ Demonstrating the following operations in gremlin and sql on console -
     
     ![](doc/source/images/connect-gremlin-console.png)
 
-### 3. Creating Node classes, Edge classes and their properties.
+#### 3. Creating Node classes, Edge classes and their properties.
 For this tutorial, I have created  two vertex classes namely - Person and Movie. With Person’s attributes/ Properties :  Role: Director/ActorName, Fb-likes and Movie’s Attribute: Title, Year, IMDB rating, Duration, Language, Genre, Plot keywords, Num_critic_for_reviews, movie_facebook_likes. And two Edge classes - acted_in and worked_with.
 
 * To create vertex class, on your console type  create class <classname> extends V
@@ -150,7 +150,7 @@ Example :
 
 * Run these commands to create node classes, edge classes and their respective properties. 
  
-### 4. Creating Records/Vertex / Inserting
+#### 4. Creating Records/Vertex / Inserting
 * To create records in the orientdb, run the following command on your console :
 INSERT INTO  <vertex-class-name> (<class-property-1>,<class-property-2>, <class-property-3>......) VALUES (value1,value2,value3 ………...)
 Example :
@@ -160,7 +160,7 @@ INSERT INTO person (name, fblikes, role) VALUES ("Scarlett Johansson",19000.0,"a
 ![](doc/source/images/create-vertex.png)
 
 
-### 5. Creating Relation/Edge between the two vertices:
+#### 5. Creating Relation/Edge between the two vertices:
 * Run the following command on your console  to create relation/edge between two vertices.Please Note! Since orientdb is a nosql database, You can use edge class which has already been created or you can give any name to your relation and orientdb will automatically create a new edge class with that name. Before running this command, make sure the vertices you are trying to connect with this edge are already present.Otherwise, it will throw an error. Check the screenshot below, Before running the create edge command, I have created two nodes I want to connect, vertex/node with name CCH Pounder and Joel David Moore.
 Syntax:
 create edge <give-name-of-the-relation> from (select from person where name = "name-of-the-vertex") to (select from person where name = "name-of-the-vertex")
@@ -169,14 +169,14 @@ create edge worked_with from (select from person where name = "CCH Pounder") to 
 
 ![](doc/source/images/create-edge.png)
 
-### 6. Retrieving edge/vertex  based on a condition.
+#### 6. Retrieving edge/vertex  based on a condition.
 * Use SELECT in orientdb, Similar to the select in sql to retrieve data on a particular condition. Suppose, You want to retrieve the fblikes of an actor with name Scarlett Johansson.
 Syntax : select <whichever-parameter-you-want-retrieve> from <name-of-the-class> where <condition>
 Example : select fblikes from person where name = "Scarlett Johansson"
  
 ![](doc/source/images/retrieve-vertex.png)
 
-### 7. Updating an edge/vertex.
+#### 7. Updating an edge/vertex.
 * To update class or record, the syntax is :
 UPDATE <class>|CLUSTER:<cluster>|<recordID>
  [SET|INCREMENT|ADD|REMOVE|PUT <field-name> = <field-value>[,]*]|[CONTENT|MERGE <JSON>]
@@ -190,7 +190,7 @@ UPDATE person SET role='director' UPSERT where name = "Scarlett Johansson"
 
 ![](doc/source/images/update-record.png)
 
-### 8. Deleting an edge/vertex.
+#### 8. Deleting an edge/vertex.
 * Deleting an edge/vertex.
 DELETE EDGE
 You can delete one or more edges from the database. Use this command if you work against graphs. The "Delete edge" command takes care to remove all the cross references to the edge in both "in" and "out" vertices.
@@ -211,7 +211,7 @@ DELETE VERTEX from person where name = "Scarlett Johansson"
 
 ![](doc/source/images/delete-vertex.png)
 
-### 9. Insights
+#### 9. Insights
 You created and populated a small graph of movie dataset.To cross edges, you can use special graph functions, such as:
 * OUT() To retrieve the adjacent outgoing vertices
 * IN() To retrieve the adjacent incoming vertices
@@ -248,10 +248,12 @@ e = g.addEdge(v1, v2, 'worked_with');
 
 * Get a vertex with a particular id :
         To retrieve a vertex by its ID, use the v(id) method passing the record id as argument (with or without the prefix '#').Run : g.v('18:1')
+        
 ![](doc/source/images/display-all-vertices-gremlin.png)
 
 * Retrieve all the edges present in the graph :
         To retrieve all the edges present in the graph, use g.E method.
+        
 ![](doc/source/images/display-all-edges-gremlin.png)
 
 * Traversal
