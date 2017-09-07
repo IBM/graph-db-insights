@@ -146,12 +146,12 @@ For this Notebook, To run every cell one by one is recommended. It will give a b
 Demonstrating the following operations in gremlin and sql on console -
  * 2.1 [Accessing the console](#21-accessing-the-console)
  * 2.2 [Creating and connecting database](#22-creating-and-connecting-database)
- * 2.3 [Creating Node classes, Edge classes and their properties](#23-creating Node classes, Edge classes and their properties)
- * 2.4 [Creating vertex](#24-creating-vertex)
- * 2.5 [Creating and edge between the two vertex](#25-Creating and edge between the two vertex)
- * 2.6 [Retrieving edge/vertex  based on a condition](#26-Retrieving edge/vertex  based on a condition)
- * 2.7 [Updating an edge/vertex](#27-Updating an edge/vertex)
- * 2.8 [Deleting an edge/vertex](#28-deleting an edge/vertex)
+ * 2.3 [Creating Node classes, Edge classes and their properties](23-creating-node-classes-edge-classes-and-their-properties)
+ * 2.4 [Creating Records/Vertex / Inserting](#24-creating-recordsvertex--inserting)
+ * 2.5 [Creating and edge between the two vertex](#25-creating-relationedge-between-the-two-vertices)
+ * 2.6 [Retrieving edge/vertex  based on a condition](#26-retrieving-edgevertex--based-on-a-condition)
+ * 2.7 [Updating an edge/vertex](#27-updating-an-edgevertex)
+ * 2.8 [Deleting an edge/vertex](#28-deleting-an-edgevertex)
  * 2.9 [Insights](#29-insights)
 
 #### 2.1 Accessing the console.
