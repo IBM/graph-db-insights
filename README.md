@@ -157,25 +157,35 @@ Demonstrating the following operations in gremlin and sql on console -
 #### 2.1 Accessing the console.
   * In the bin folder of orientdb run `./console.sh` on the terminal to access the orientdb console.To access the gremlin console run `./gremlin.sh`.
   
-    ![](doc/source/images/orientdb-console.png)
+   
  
  
 #### 2.2 connecting to server and Creating database 
-  * on the orientdb console run CONNECT remote:<ip-of-the-orientdb-kubernetes-cluster> <username> <password> 
+  * on the orientdb console run ` CONNECT remote:/< ip-of-the-orientdb-kubernetes-cluster/> <username> <password> `
    
-   ![](doc/source/images/connect-console.png)
+    ```bash
+    $ ./console.sh 
+    OrientDB console v.2.2.26 (build ae9fcb9c075e1d74560a336a96b57d3661234c7b) https://www.orientdb.com
+    Type 'help' to display all the supported commands.
+    Installing extensions for GREMLIN language v.2.6.0
+
+    orientdb> connect remote:localhost root root                          
+
+    Connecting to remote Server instance [remote:localhost] with user 'root'...OK
+    ```
+ 
    
   * You are connected to the server now , let’s create a new database. To create type create database remote:localhost/<name-of-the-database> <username> <password> plocal graph
   
-    ![](doc/source/images/create-database.png)
+   
    
   * To verify that you are connected to orientdb, type command LIST DATABASES and you should see the databases present in the orientdb.
   
-    ![](doc/source/images/list-databases.png)
+  
   
   * on the gremlin console run g = new OrientGraph("remote:<ip-of-the-orientdb-kubernetes-cluster>/<database-name>");
     
-    ![](doc/source/images/connect-gremlin-console.png)
+   
 
 #### 2.3 Creating Node classes, Edge classes and their properties.
 For this tutorial, I have created  two vertex classes namely - Person and Movie. With Person’s attributes/ Properties :  Role: Director/ActorName, Fb-likes and Movie’s Attribute: Title, Year, IMDB rating, Duration, Language, Genre, Plot keywords, Num_critic_for_reviews, movie_facebook_likes. And two Edge classes - acted_in and worked_with.
@@ -183,27 +193,24 @@ For this tutorial, I have created  two vertex classes namely - Person and Movie.
 * To create vertex class, on your console type  create class <classname> extends V
     create class person extends V
     create class movie extends V
+ 
         
-![](doc/source/images/create-node-class.png)
 
 * To create property of the vertex class, run this command : 
 Create property <class-name>.<name-of-the-property>  IF NOT EXISTS   TYPE.  
 
-![](doc/source/images/create-property-node-class.png)
+
 
 * Creating Edge Class.
 To create edge class, on your console type : create class <classname> extends E.
   
-![](doc/source/images/create-edge-class.png)
   
 * Edges have two ends.It always start from one vertex class and ends on another vertex.Its acts as a bridge between two vertices.Hence, The edge will always have in and out property. To create property of the Edge class, run this command :
         Create property <class-name>.in  IF NOT EXISTS  Link  <linked_vertex_class>  
         Create property <class-name>.out  IF NOT EXISTS Link  <linked_vertex_class>
 Example :
 
-![](doc/source/images/create-property-edge-class-in.png)
 
-![](doc/source/images/create-property-edge-class-out.png)
 
 
 * Run these commands to create node classes, edge classes and their respective properties. 
