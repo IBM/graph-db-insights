@@ -53,11 +53,11 @@ described in detail below.
 
 
 1. [Brief Introduction to the Graph Theory](#1-brief-introduction-to-the-graph-theory)
-1. [Orientdb-a multi model database.](#2-orientdb-a-multi-model-database.)
+1. [Orientdb-a multi model database.](#2-orientdb)
 1. [Orientdb Console](#3-orientdb-console )
 1. [Orientdb Gremlin Console](#4-orientdb-gremlin-console )
-1. [Orientdb Studio](#5-orientdb-Studio)
-1. [PyOrient](#6-pyOrient)
+1. [Orientdb Studio](#5-orientdb-studio)
+1. [PyOrient](#6-pyorient)
 1. [Sign up for the Data Science Experience](#7-sign-up-for-the-data-science-experience)
 1. [Create the notebook](#8-create-the-notebook)
 1. [Add the data](#9-add-the-data)
