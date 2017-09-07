@@ -155,51 +155,37 @@ Demonstrating the following operations in gremlin and sql on console -
  * 2.9 [Insights](#29-insights)
 
 #### 2.1 Accessing the console.
-  * In the bin folder of orientdb run `./console.sh` on the terminal to access the orientdb console.To access the gremlin console run `./gremlin.sh`.
+* In the bin folder of orientdb run `./console.sh` on the terminal to access the orientdb console.To access the gremlin console run `./gremlin.sh`.
   
 #### 2.2 connecting to server and Creating database 
-  * on the orientdb console run ` CONNECT remote:/< ip-of-the-orientdb-kubernetes-cluster/> <username> <password> `
+* on the orientdb console run ` CONNECT remote:/< ip-of-the-orientdb-kubernetes-cluster/> <username> <password> `
    
-    ```bash
-    $ ./console.sh 
-    OrientDB console v.2.2.26 (build ae9fcb9c075e1d74560a336a96b57d3661234c7b) https://www.orientdb.com
-    Type 'help' to display all the supported commands.
-    Installing extensions for GREMLIN language v.2.6.0
+```bash
+$ ./console.sh 
+OrientDB console v.2.2.26 (build ae9fcb9c075e1d74560a336a96b57d3661234c7b) https://www.orientdb.com
+Type 'help' to display all the supported commands.
+Installing extensions for GREMLIN language v.2.6.0
 
-    orientdb> connect remote:localhost root root                          
+orientdb> connect remote:localhost root root                          
 
-    Connecting to remote Server instance [remote:localhost] with user 'root'...OK
-    ```
+Connecting to remote Server instance [remote:localhost] with user 'root'...OK
+```
  
    
-  * You are connected to the server now.To create database type `create database remote:localhost/<name-of-the-database> <username> <password> plocal graph`
+* You are connected to the server now.To create database type `create database remote:localhost/<name-of-the-database> <username> <password> plocal graph`
+
+```bash
+orientdb {server=remote:localhost/}> create database remote:localhost/demo root root plocal graph
+
+Creating database [remote:localhost/demo] using the storage type [plocal]...
+Disconnecting from remote server [remote:localhost/]...
+OK
+Connecting to database [remote:localhost/demo] with user 'root'...OK
+Database created successfully.
+```
   
-   ```bash
-    orientdb {server=remote:localhost/}> create database remote:localhost/demo root root plocal graph
-
-    Creating database [remote:localhost/demo] using the storage type [plocal]...
-    Disconnecting from remote server [remote:localhost/]...
-    OK
-    Connecting to database [remote:localhost/demo] with user 'root'...OK
-    Database created successfully.
-   ```
+* To verify that you are connected to orientdb, type command `LIST DATABASES` and you should see the databases present in the orientdb.
   
-   * To verify that you are connected to orientdb, type command `LIST DATABASES` and you should see the databases present in the orientdb.
-  
-    ```bash
-     orientdb {server=remote:localhost/}> list databases
-
-     Found 3 databases:
-
-     * test (plocal)
-     * GratefulDeadConcerts (plocal)
-     * test-db (plocal)
-
-    ```
-    
-#### 2.3 Creating Node classes, Edge classes and their properties.
-For this tutorial, I have created  two vertex classes namely - Person and Movie. With Person’s attributes/ Properties :  Role: Director/Actor, Name, Fb-likes and Movie’s Attribute: Title, Year, IMDB rating, Duration, Language, Genre, Plot keywords, Num_critic_for_reviews, movie_facebook_likes. And two Edge classes - acted_in and worked_with.
-
 ```bash
 orientdb {server=remote:localhost/}> list databases
 
@@ -210,6 +196,9 @@ Found 3 databases:
 * test-db (plocal)
 
 ```
+    
+#### 2.3 Creating Node classes, Edge classes and their properties.
+For this tutorial, I have created  two vertex classes namely - `Person and Movie`. With Person’s attributes/ Properties :  Role: Director/Actor, Name, Fb-likes and Movie’s Attribute: Title, Year, IMDB rating, Duration, Language, Genre, Plot keywords, Num_critic_for_reviews, movie_facebook_likes. And two Edge classes - `acted_in and worked_with.`
 
 * To create vertex class, on your console type  `create class <classname> extends V`
  
@@ -283,9 +272,7 @@ Property created successfully with id=2.
  
 #### 2.4 Creating Records/Vertex / Inserting
 * To create records in the orientdb, run the following command on your console :
-INSERT INTO  <vertex-class-name> (<class-property-1>,<class-property-2>, <class-property-3>......) VALUES (value1,value2,value3 ………...)
-Example :
-INSERT INTO person (name, fblikes, role) VALUES ("Scarlett Johansson",19000.0,"actor")
+`INSERT INTO  <vertex-class-name> (<class-property-1>,<class-property-2>, <class-property-3>......) VALUES (value1,value2,value3 ………...)`
 
 ```bash
 orientdb {db=demo}> INSERT INTO person (name, fblikes, role) VALUES ("Scarlett Johansson",19000.0,"actor")
@@ -296,7 +283,6 @@ Inserted record 'person#18:0{name:CCH Pounder,fblikes:1000.0,role:actor} v1' in 
 
 orientdb {db=demo}> INSERT INTO person (name, fblikes, role) VALUES ("Joel David Moore",900.0,"actor")
 Inserted record 'person#19:0{name:Joel David Moore,fblikes:900.0,role:actor} v1' in 0.002000 sec(s).
-
 ```
 
 #### 2.5 Creating Relation/Edge between the two vertices:
@@ -337,7 +323,7 @@ orientdb {db=demo}> select fblikes from person where name = "Scarlett Johansson"
  [WHERE <conditions>]
  [LOCK default|record]
  [LIMIT <max-records>] [TIMEOUT <timeout>]`
-Example : To update a role of a person where name is "Scarlett Johansson" from actor to director 
+To update a role of a person where name is "Scarlett Johansson" from actor to director 
  
 ```bash
 orientdb {db=demo}> select * from person where name = "Scarlett Johansson"                  
@@ -396,55 +382,98 @@ SELECT out('worked_with') FROM person WHERE name = 'Johnny Depp'
 
 ## 3. Orientdb Gremlin Console 
 * To access the gremlin console run `./gremlin.sh`.
-   
-  
+```bash
+$ ./gremlin.sh 
+
+         \,,,/
+         (o o)
+-----oOOo-(_)-oOOo-----
+gremlin> 
+
+```  
 * Connecting to orientdb:
-  To open a database on a remote server. Assure the server is up and running. To start the server just launch server.sh.
-    g = new OrientGraph("remote:<ip-of-the-kubernetes-cluster>/<database-name>");
-    ![](doc/source/images/connect-to-database-gremlin.png)
-  
+To open a database on a remote server. Assure the server is up and running on kubernetese.
+`g = new OrientGraph("remote:<ip-of-the-kubernetes-cluster>/<database-name>");`
+ 
+```bash
+gremlin>  g = new OrientGraph("remote:localhost/demo");
+==>orientgraph[remote:localhost/demo]
+``` 
+    
 * Creating vertex, To create a new vertex use the addVertex() method. The vertex will be created and the unique id will be displayed as return value.: run g.addVertex();
-![](doc/source/images/add-vertex.png)
+```bash
+gremlin> v2 = g.addVertex();                           
+==>v[#-1:-2]
+
+gremlin> v1 = g.addVertex();                           
+==>v[#-1:-3]
+
+gremlin> v3 = g.addVertex();                  
+==>v[#-1:-3]
+``` 
+
 
 * Creating an edge :
-To create a new edge between two vertices use the addEdge(v1, v2, label) method. The edge will be created with the label specified.
-v1 = g.addVertex();
-v2 = g.addVertex();
-e = g.addEdge(v1, v2, 'worked_with');
+To create a new edge between two vertices use the `addEdge(v1, v2, label)` method. The edge will be created with the label specified.
 
-![](doc/source/images/create-edge-gremlin.png)
+```bash
+gremlin> e = g.addEdge(v1, v3, 'worked_with');
+==>e[#-1:-4][#10:0-worked_with->#-1:-3]
+``` 
 
 * Display all the vertices present in the database :
- Use g.V method to do so!
- 
-![](doc/source/images/display-all-vertices-gremlin.png)
+Use `g.V` method to do so!
+
+```bash
+gremlin> g.V                                           
+==>v[#9:0]
+==>v[#10:0]
+==>v[#-1:-3]
+
+``` 
 
 * Get a vertex with a particular id :
-        To retrieve a vertex by its ID, use the v(id) method passing the record id as argument (with or without the prefix '#').Run : g.v('18:1')
+        To retrieve a vertex by its ID, use the v(id) method passing the record id as argument (with or without the prefix '#').Run : `g.v('10:0')`
         
-![](doc/source/images/display-all-vertices-gremlin.png)
+```bash
+gremlin> g.v('10:0')
+==>v[#10:0]
+``` 
 
 * Retrieve all the edges present in the graph :
-        To retrieve all the edges present in the graph, use g.E method.
+To retrieve all the edges present in the graph, use `g.E` method.
         
-![](doc/source/images/display-all-edges-gremlin.png)
+```bash
+gremlin> g.E                                  
+==>e[#-1:-2][#10:0-worked_with->#9:0]
+==>e[#-1:-4][#10:0-worked_with->#-1:-3]
+``` 
 
 * Traversal
 Gremlin is  very powerful in traversing graphs. Once you have a graph loaded in your database you can traverse it in many ways.
 Basic Traversal
-To display all the outgoing edges of the first vertex , use the .outE at the vertex. Example: v1.outE
+To display all the outgoing edges of the first vertex , use the .outE at the vertex. Example:` v1.outE`
+```bash
+gremlin> v1.outE
+==>e[#-1:-2][#10:0-worked_with->#9:0]
+==>e[#-1:-4][#10:0-worked_with->#-1:-3]
+``` 
 
-![](doc/source/images/traversal-gremlin-outgoing-edges.png)
-
-And to display all the incoming edges of the second vertex, use .inE method. Example v2.inE
-
-![](doc/source/images/traversal-gremlin-incoming-edges.png)
+And to display all the incoming edges of the second vertex, use .inE method. Example `v2.inE`
+```bash
+gremlin> v2.inE
+==>e[#-1:-2][#10:0-worked_with->#9:0]
+``` 
 
 * Filter results
 For example , if you want to return all the outgoing edges of all the vertices with label equals to 'worked_with’
-g.V.outE('worked_with')
+`g.V.outE('worked_with')`
+```bash
+gremlin> g.V.outE('worked_with')
+==>e[#-1:-2][#10:0-worked_with->#9:0]
+==>e[#-1:-4][#10:0-worked_with->#-1:-3]
+``` 
 
-![](doc/source/images/traversal-gremlin-incoming-edges.png)
 
 
 ## 4. Orientdb Studio
