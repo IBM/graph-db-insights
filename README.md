@@ -53,7 +53,7 @@ described in detail below.
 
 
 1. [Brief Introduction to the Graph Theory](#1-brief-introduction-to-the-graph-theory)
-1. [Orientdb-a multi model database.](#2-orientdb)
+1. [Orientdb a multi model database.](#2-orientdb-a-multi-model-database)
 1. [Orientdb Console](#3-orientdb-console )
 1. [Orientdb Gremlin Console](#4-orientdb-gremlin-console )
 1. [Orientdb Studio](#5-orientdb-studio)
@@ -80,7 +80,7 @@ E = {ab, ac, bd, cd, de}
  
 A graph is composed of two elements: a node and a relationship(edges).Each node represents an entity (a person, place, thing, category or other piece of data), and each relationship represents how two nodes are associated. This general-purpose structure allows you to model all kinds of scenarios – from a system of roads, to a network of devices, to a population’s medical history or anything else defined by relationships.
 
-## 2. Orientdb-a multi model database.
+## 2. Orientdb a multi model database.
 Orientdb is a Multi-Model Open Source NoSQL DBMS that combines the power of graphs with documents, key/value, reactive, object-oriented and geospatial models into one scalable, high-performance operational database.Because of the ubiquitous nature of the SQL in the world of Database developers.Developers are familiar and comfortable with SQL. Therefore, Instead of inventing new query language Orientdb extended sql to support more complex graph concepts like Trees and Graphs. Apart from sql, It provides the APIs and Drivers for Python, Java, Javascript, NodeJs, PHP, .NET and Gremlin- A specialised query language for property graphs. To know more about what are graph databases? and what are property graphs? , you can go through these links :
 
 [Orientdb](http://orientdb.com/graph-database/)
