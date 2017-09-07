@@ -157,9 +157,6 @@ Demonstrating the following operations in gremlin and sql on console -
 #### 2.1 Accessing the console.
   * In the bin folder of orientdb run `./console.sh` on the terminal to access the orientdb console.To access the gremlin console run `./gremlin.sh`.
   
-   
- 
- 
 #### 2.2 connecting to server and Creating database 
   * on the orientdb console run ` CONNECT remote:/< ip-of-the-orientdb-kubernetes-cluster/> <username> <password> `
    
@@ -175,45 +172,114 @@ Demonstrating the following operations in gremlin and sql on console -
     ```
  
    
-  * You are connected to the server now , let’s create a new database. To create type create database remote:localhost/<name-of-the-database> <username> <password> plocal graph
+  * You are connected to the server now.To create database type `create database remote:localhost/<name-of-the-database> <username> <password> plocal graph`
   
-   
-   
-  * To verify that you are connected to orientdb, type command LIST DATABASES and you should see the databases present in the orientdb.
+   ```bash
+    orientdb {server=remote:localhost/}> create database remote:localhost/demo root root plocal graph
+
+    Creating database [remote:localhost/demo] using the storage type [plocal]...
+    Disconnecting from remote server [remote:localhost/]...
+    OK
+    Connecting to database [remote:localhost/demo] with user 'root'...OK
+    Database created successfully.
+   ```
   
+   * To verify that you are connected to orientdb, type command `LIST DATABASES` and you should see the databases present in the orientdb.
   
-  
-  * on the gremlin console run g = new OrientGraph("remote:<ip-of-the-orientdb-kubernetes-cluster>/<database-name>");
+    ```bash
+     orientdb {server=remote:localhost/}> list databases
+
+     Found 3 databases:
+
+     * test (plocal)
+     * GratefulDeadConcerts (plocal)
+     * test-db (plocal)
+
+    ```
     
-   
-
 #### 2.3 Creating Node classes, Edge classes and their properties.
-For this tutorial, I have created  two vertex classes namely - Person and Movie. With Person’s attributes/ Properties :  Role: Director/ActorName, Fb-likes and Movie’s Attribute: Title, Year, IMDB rating, Duration, Language, Genre, Plot keywords, Num_critic_for_reviews, movie_facebook_likes. And two Edge classes - acted_in and worked_with.
+For this tutorial, I have created  two vertex classes namely - Person and Movie. With Person’s attributes/ Properties :  Role: Director/Actor, Name, Fb-likes and Movie’s Attribute: Title, Year, IMDB rating, Duration, Language, Genre, Plot keywords, Num_critic_for_reviews, movie_facebook_likes. And two Edge classes - acted_in and worked_with.
 
-* To create vertex class, on your console type  create class <classname> extends V
-    create class person extends V
-    create class movie extends V
+```bash
+orientdb {server=remote:localhost/}> list databases
+
+Found 3 databases:
+
+* test (plocal)
+* GratefulDeadConcerts (plocal)
+* test-db (plocal)
+
+```
+
+* To create vertex class, on your console type  `create class <classname> extends V`
  
-        
+```bash
+Current database is: remote:localhost/demo
+orientdb {db=demo}> create class person extends V
 
-* To create property of the vertex class, run this command : 
-Create property <class-name>.<name-of-the-property>  IF NOT EXISTS   TYPE.  
+Class created successfully. Total classes in database now: 11.
+
+orientdb {db=demo}> create class movie  extends V
+
+Class created successfully. Total classes in database now: 12.
+```
+
+
+* To create property of the vertex class, run this command : `Create property <class-name>.<name-of-the-property>  IF NOT EXISTS TYPE.`
+
+```bash
+orientdb {db=demo}> Create property person.name IF NOT EXISTS string
+
+Property created successfully with id=1.
+
+orientdb {db=demo}> Create property person.role IF NOT EXISTS string
+
+Property created successfully with id=2.
+
+orientdb {db=demo}> Create property person.fblikes IF NOT EXISTS float 
+
+Property created successfully with id=3.
+```
 
 
 
 * Creating Edge Class.
-To create edge class, on your console type : create class <classname> extends E.
+  To create edge class, on your console type : `create class <classname> extends E. `
+
+```bash
+orientdb {db=demo}> create class acted_in  extends E                  
+
+Class created successfully. Total classes in database now: 13.
+
+orientdb {db=demo}> create class worked_with  extends E
+
+Class created successfully. Total classes in database now: 14.
+```
   
   
 * Edges have two ends.It always start from one vertex class and ends on another vertex.Its acts as a bridge between two vertices.Hence, The edge will always have in and out property. To create property of the Edge class, run this command :
-        Create property <class-name>.in  IF NOT EXISTS  Link  <linked_vertex_class>  
-        Create property <class-name>.out  IF NOT EXISTS Link  <linked_vertex_class>
-Example :
+        `Create property <class-name>.in  IF NOT EXISTS  Link  <linked_vertex_class>`  
+        `Create property <class-name>.out  IF NOT EXISTS Link  <linked_vertex_class>`
+        
+         
+```bash
+orientdb {db=demo}> Create property worked_with.in IF NOT EXISTS link person               
+Property created successfully with id=1.
 
+orientdb {db=demo}> Create property worked_with.out IF NOT EXISTS link person
 
+Property created successfully with id=2.
 
+orientdb {db=demo}> Create property acted_in.out IF NOT EXISTS link person   
 
-* Run these commands to create node classes, edge classes and their respective properties. 
+Property created successfully with id=1.
+
+orientdb {db=demo}> Create property acted_in.in IF NOT EXISTS link movie  
+
+Property created successfully with id=2.
+```
+
+* Run the above commands to create node classes, edge classes and their respective properties. 
  
 #### 2.4 Creating Records/Vertex / Inserting
 * To create records in the orientdb, run the following command on your console :
@@ -221,61 +287,103 @@ INSERT INTO  <vertex-class-name> (<class-property-1>,<class-property-2>, <class-
 Example :
 INSERT INTO person (name, fblikes, role) VALUES ("Scarlett Johansson",19000.0,"actor")
 
+```bash
+orientdb {db=demo}> INSERT INTO person (name, fblikes, role) VALUES ("Scarlett Johansson",19000.0,"actor")
+Inserted record 'person#17:0{name:Scarlett Johansson,fblikes:19000.0,role:actor} v1' in 0.008000 sec(s).
 
-![](doc/source/images/create-vertex.png)
+orientdb {db=demo}> INSERT INTO person (name, fblikes, role) VALUES ("CCH Pounder",1000.0,"actor")        
+Inserted record 'person#18:0{name:CCH Pounder,fblikes:1000.0,role:actor} v1' in 0.004000 sec(s).
 
+orientdb {db=demo}> INSERT INTO person (name, fblikes, role) VALUES ("Joel David Moore",900.0,"actor")
+Inserted record 'person#19:0{name:Joel David Moore,fblikes:900.0,role:actor} v1' in 0.002000 sec(s).
+
+```
 
 #### 2.5 Creating Relation/Edge between the two vertices:
 * Run the following command on your console  to create relation/edge between two vertices.Please Note! Since orientdb is a nosql database, You can use edge class which has already been created or you can give any name to your relation and orientdb will automatically create a new edge class with that name. Before running this command, make sure the vertices you are trying to connect with this edge are already present.Otherwise, it will throw an error. Check the screenshot below, Before running the create edge command, I have created two nodes I want to connect, vertex/node with name CCH Pounder and Joel David Moore.
-Syntax:
-create edge <give-name-of-the-relation> from (select from person where name = "name-of-the-vertex") to (select from person where name = "name-of-the-vertex")
-Example :
-create edge worked_with from (select from person where name = "CCH Pounder") to (select from person where name = "Joel David Moore")
+`create edge <give-name-of-the-relation> from (select from person where name = "name-of-the-vertex") to (select from person where name = "name-of-the-vertex")`
 
-![](doc/source/images/create-edge.png)
+```bash
+orientdb {db=demo}> create edge worked_with from (select from person where name = "CCH Pounder") to (select from person where name = "Joel David Moore")
+
++----+-----+-----------+-----+-----+
+|#   |@RID |@CLASS     |out  |in   |
++----+-----+-----------+-----+-----+
+|0   |#29:0|worked_with|#18:0|#19:0|
++----+-----+-----------+-----+-----+
+Created '1' edges in 0.027000 sec(s).
+```
 
 #### 2.6 Retrieving edge/vertex  based on a condition.
 * Use SELECT in orientdb, Similar to the select in sql to retrieve data on a particular condition. Suppose, You want to retrieve the fblikes of an actor with name Scarlett Johansson.
-Syntax : select <whichever-parameter-you-want-retrieve> from <name-of-the-class> where <condition>
-Example : select fblikes from person where name = "Scarlett Johansson"
- 
-![](doc/source/images/retrieve-vertex.png)
+` select <whichever-parameter-you-want-retrieve> from <name-of-the-class> where <condition> `
+
+```bash
+orientdb {db=demo}> select fblikes from person where name = "Scarlett Johansson"
+
++----+-------+
+|#   |fblikes|
++----+-------+
+|0   |19000.0|
++----+-------+
+```
 
 #### 2.7 Updating an edge/vertex.
 * To update class or record, the syntax is :
-UPDATE <class>|CLUSTER:<cluster>|<recordID>
+`UPDATE <class>|CLUSTER:<cluster>|<recordID>
  [SET|INCREMENT|ADD|REMOVE|PUT <field-name> = <field-value>[,]*]|[CONTENT|MERGE <JSON>]
  [UPSERT]
  [RETURN <returning> [<returning-expression>]]
  [WHERE <conditions>]
  [LOCK default|record]
- [LIMIT <max-records>] [TIMEOUT <timeout>]
-Example : To update a role of a person where name is "Scarlett Johansson" from actor to director --
-UPDATE person SET role='director' UPSERT where name = "Scarlett Johansson"
+ [LIMIT <max-records>] [TIMEOUT <timeout>]`
+Example : To update a role of a person where name is "Scarlett Johansson" from actor to director 
+ 
+```bash
+orientdb {db=demo}> select * from person where name = "Scarlett Johansson"                  
++----+-----+------+------------------+-------+-----+
+|#   |@RID |@CLASS|name              |fblikes|role |
++----+-----+------+------------------+-------+-----+
+|0   |#17:0|person|Scarlett Johansson|19000.0|actor|
++----+-----+------+------------------+-------+-----+
 
-![](doc/source/images/update-record.png)
+1 item(s) found. Query executed in 0.002 sec(s).
 
-#### 2.8 Deleting an edge/vertex.
+orientdb {db=demo}>  UPDATE person SET role='actor' UPSERT where name = "Scarlett Johansson"   
+Updated record(s) '1' in 0.002000 sec(s).
+
+
+orientdb {db=demo}> select * from person where name = "Scarlett Johansson"                     
++----+-----+------+------------------+-------+--------+
+|#   |@RID |@CLASS|name              |fblikes|role    |
++----+-----+------+------------------+-------+--------+
+|0   |#17:0|person|Scarlett Johansson|19000.0|director|
++----+-----+------+------------------+-------+--------+
+
+1 item(s) found. Query executed in 0.002 sec(s).
+```
+
 * Deleting an edge/vertex.
 DELETE EDGE
 You can delete one or more edges from the database. Use this command if you work against graphs. The "Delete edge" command takes care to remove all the cross references to the edge in both "in" and "out" vertices.
-Syntax
-DELETE EDGE <rid>|[<rid> (, <rid>)*]|FROM <rid>|TO <rid>|[<class>] [WHERE <conditions>]> [LIMIT <MaxRecords>]
-Example :
-DELETE edge worked_with from (select from person where name = "CCH Pounder") to (select from person where name = "Joel David Moore")
+`DELETE EDGE <rid>|[<rid> (, <rid>)*]|FROM <rid>|TO <rid>|[<class>] [WHERE <conditions>]> [LIMIT <MaxRecords>]`
 
-![](doc/source/images/delete-edge.png)
+```bash
+orientdb {db=demo}> DELETE edge worked_with from (select from person where name = "CCH Pounder") to (select from person where name = "Joel David Moore")
+
+Delete record(s) '1' in 0.015000 sec(s).
+```
 
 * DELETE VERTEX        
 You can  delete one or more vertices from the database. Use this command if you work against graphs. The "Delete Vertex" (like the Delete Edge) command takes care to remove all the cross references to the vertices in all the edges involved.
-Syntax:
-DELETE VERTEX <rid>|<class>|FROM (<subquery>) [WHERE <conditions>] [LIMIT <MaxRecords>>]
-Example :
-DELETE VERTEX from person where name = "Scarlett Johansson"
 
+`DELETE VERTEX <rid>|<class>|FROM (<subquery>) [WHERE <conditions>] [LIMIT <MaxRecords>>]`
+ 
+```bash
+orientdb {db=demo}> DELETE VERTEX from person where name = "Scarlett Johansson"
 
-![](doc/source/images/delete-vertex.png)
-
+Delete record(s) '1' in 0.007000 sec(s).
+```
 #### 2.9 Insights
 You created and populated a small graph of movie dataset.To cross edges, you can use special graph functions, such as:
 * OUT() To retrieve the adjacent outgoing vertices
@@ -288,7 +396,7 @@ SELECT out('worked_with') FROM person WHERE name = 'Johnny Depp'
 
 ## 3. Orientdb Gremlin Console 
 * To access the gremlin console run `./gremlin.sh`.
-  ![](doc/source/images/orientdb-gremlin-console.png)
+   
   
 * Connecting to orientdb:
   To open a database on a remote server. Assure the server is up and running. To start the server just launch server.sh.
