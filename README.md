@@ -52,12 +52,12 @@ Follow these steps to setup and run this developer journey. The steps are
 described in detail below.
 
 
-1. [Brief Introduction to the Graph Theory](#1-Brief-Introduction-to-the-Graph-Theory)
-1. [Orientdb-a multi model database.](#2-Orientdb-a-multi-model-database.)
-1. [Orientdb Console ](#3-Orientdb-Console )
-1. [Orientdb Gremlin Console ](#4-Orientdb-Gremlin-Console )
-1. [Orientdb Studio](#5-Orientdb-Studio)
-1. [PyOrient](#6-PyOrient-Python-Driver-for-orientdb)
+1. [Brief Introduction to the Graph Theory](#1-brief-introduction-to-the-graph-theory)
+1. [Orientdb-a multi model database.](#2-orientdb-a-multi-model-database.)
+1. [Orientdb Console](#3-orientdb-console )
+1. [Orientdb Gremlin Console](#4-orientdb-gremlin-console )
+1. [Orientdb Studio](#5-orientdb-Studio)
+1. [PyOrient](#6-pyOrient)
 1. [Sign up for the Data Science Experience](#7-sign-up-for-the-data-science-experience)
 1. [Create the notebook](#8-create-the-notebook)
 1. [Add the data](#9-add-the-data)
@@ -289,7 +289,7 @@ g.V.outE('worked_with')
 
 ![](doc/source/images/orientdb-studio-query-settings.png)
 
-## 6. PyOrient(Python Driver for orientdb)
+## 6. PyOrient
 The orientdb can also accessed through python using pyorient.If you are using the Data Science Experience ( DSX) , set up the orientdb on kubernetes is important.This is because if you set up the orientdb locally, you won’t able to access it through DSX, as the orientdb console port 2424 and orientdb studio 2480 wouldn’t be exposed on bluemix.Deploy orientdb on kubernetes container using [Deploy Orientdb on Kubernetes]( https://github.com/IBM/deploy-graph-db-container) will expose the ports on bluemix through which orientdb can be accessed from the notebook on data science experience.You can use the ip-address of your cluster and node port on which the port 2424 orientdb console is mapped, to access that orientdb through notebook.Notebook's markdown and comments are self explanatory to make you understand its functioning.
 
 Set up the Notebook on Data Science experience with object storage using following steps :
