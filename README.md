@@ -349,7 +349,7 @@ orientdb {db=demo}> select * from person where name = "Scarlett Johansson"
 1 item(s) found. Query executed in 0.002 sec(s).
 ```
 
-#### * 2.8 Deleting an edge & vertex.
+#### 2.8 Deleting an edge & vertex.
 DELETE EDGE
 You can delete one or more edges from the database. Use this command if you work against graphs. The "Delete edge" command takes care to remove all the cross references to the edge in both "in" and "out" vertices.
 `DELETE EDGE <rid>|[<rid> (, <rid>)*]|FROM <rid>|TO <rid>|[<class>] [WHERE <conditions>]> [LIMIT <MaxRecords>]`
