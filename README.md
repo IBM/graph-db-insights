@@ -88,7 +88,7 @@ Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By sig
 * Select the `From URL` tab.
 * Enter a name for the notebook.
 * Optionally, enter a description for the notebook.
-* Enter this Notebook URL: https://github.com/IBM/graph-db-insights/notebooks/Graphdb-Insights.ipynb
+* Enter this Notebook URL: https://github.com/IBM/graph-db-insights/blob/master/notebooks/Graphdb-insights.ipynb
 * Click the `Create Notebook` button.
 
 ### 1.3 Add the data 
