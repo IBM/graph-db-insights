@@ -41,7 +41,7 @@ For more details, see the [MAINTAINERS](MAINTAINERS.md) page.
 
 ## Communication
 
-Please feel free to connect with us [here] (https://github.com/IBM/graph-db-insights/issues).
+Please feel free to connect with us [here](https://github.com/IBM/graph-db-insights/issues).
 
 ## Setup
 
