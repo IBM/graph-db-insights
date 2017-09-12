@@ -106,9 +106,15 @@ and its `Files` tab.
 * Select the cell below `3. Add your service credentials for Object Storage` section in the notebook to update the credentials for Object Store.
 * Use `Find and Add Data` (look for the `10/01` icon) and its `Files` tab. You should see the file names uploaded earlier. Make sure your active cell is the empty one created earlier. 
 * Select `Insert to code` below config.json and click insert credentials from the dropdown.
+
+![](doc/source/images/config.png)
+
 * Select the cells below `4. Loading the Configuration and Data Files.` to load the files used by the notebook.
 * Run the cell below `4.1. Loading the config.json` to load the configuration file.
 * Select `Insert to code` below Graphdb-Insights.csv(movie dataset) and click Insert Pandas Dataframe from the dropdown in the next cell `4.2. Loading the Imdb movie data`
+
+![](doc/source/images/pandas.png)
+
 
 ## 6. Run the notebook
 
@@ -136,19 +142,28 @@ There are several ways to execute the code cells in your notebook:
     panel. Here you can schedule your notebook to be executed once at some future
     time, or repeatedly at your specified interval.
 
-For this Notebook, to run every cell one by one is recommended.
+For this Notebook, to run every cell one by one is recommended so as to understand the flow of the notebook and also to comprehend better, the operation performed by each cell on orientdb. 
 
 ## 7. Flow of the notebook
 
 The notebook has been divided into various sections with each section performing a specific task on the OrientDB.
 
-* The first part of the notebook deals with the installation of the orientdb, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
-* The second part consists of the functions used in the notebook. OrientDB, rather than creating the new graph query language `extended SQL` for the purpose of extracting insights and traversing the graph. The functions in the notebook are divided into two categories - `Utility Functions` and the `Core Functions`. The utility functions are basically to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for operations performed over OrientDB.
-* The Third part focuses on how to get insights from the OrientDB database.
+* The first part(section 1 to 5) of the notebook deals with the installation of the orientdb, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
+* The second part(section 6 & 7 of the notebook) consists of the functions used in the notebook. OrientDB, rather than creating the new graph query language `extended SQL` for the purpose of extracting insights and traversing the graph. The functions in the notebook are divided into two categories - `Utility Functions` and the `Core Functions`. The utility functions are basically to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for operations performed over OrientDB.
+* The Third part(section 8 of the notebook) focuses on  performing various operations on and get insights from the OrientDB database.
 
 ## 8. Analyze the results
 
-Orientdb provides an interactive dashboard orientdb studio for visualisation of the graph. You can run the queries in the browse section of the orientdb studio to get the desired insights. The results of the query executed is in the form of table and JSON. But they can also be downloaded as csv for further analysis. To visualise the graph created using this notebook, 
+Orientdb provides an interactive dashboard orientdb studio for visualisation of the graph. You can run the queries in the browse section of the orientDB studio to get the desired insights.The notebook uses two usecases to demonstrate how to get insights from the orientDB like the most mentioned movie and the clustering of the movies with IMDB rating greater than 7.The same two queries can be executed in the browse section of the OrientDB to analyze the results, check the images for the same.The results of the query executed, is in the form of table and JSON.But they can also be downloaded as csv for further analysis. 
+
+![](doc/source/images/movie_rating.png)
+
+![](doc/source/images/most_mentioned_json.png)
+
+![](doc/source/images/most_mentioned.png)
+
+
+To visualise the graph created using this notebook, 
 * open the graph editor of the orientdb Studio 
 * execute the query in the graph editor.
 * results of the query will be in the form of graph. For example, To find the connections of a node in the graphdb i.e. `to find the coworkers of the actor Tom Hanks `, 
