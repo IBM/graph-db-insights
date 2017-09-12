@@ -28,13 +28,13 @@ When the reader has completed this journey, they will understand how to:
 
 * [Orientdb](http://orientdb.com/orientdb/): A Multi-Model Open Source NoSQL DBMS.
 
-* [IBM Data Science Experience](https://www.ibm.com/bs-en/marketplace/data-science-experience): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
+* [IBM Data Science Experience](https://apsportal.ibm.com/analytics): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
 
 * [Bluemix Object Storage](https://console.ng.bluemix.net/catalog/services/object-storage/?cm_sp=dw-bluemix-_-code-_-devcenter): A Bluemix service that provides an unstructured cloud data store to build and deliver cost effective apps and services with high reliability and fast speed to market.
 
 * [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
 
-* [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) (https://console.bluemix.net/containers-kubernetes/launch)
+* [Kubernetes Clusters](https://console.bluemix.net/containers-kubernetes/launch)
 
 ## Featured technologies
 
@@ -42,7 +42,7 @@ When the reader has completed this journey, they will understand how to:
 
 ## Prerequisite
 
-Create a Kubernetes cluster with [IBM Bluemix Container Service](https://github.com/IBM/container-journey-template) to deploy in cloud.Deploy orientdb on kubernetes container using [Deploy Orientdb on container]( https://github.com/IBM/deploy-graph-db-container). 
+Create a Kubernetes cluster with [IBM Bluemix Container Service](https://console.bluemix.net/containers-kubernetes/launch) to deploy in cloud. Deploy OrientDB on Kubernetes Cluster using [Deploy Orientdb on Kubernetes](https://github.com/IBM/deploy-graph-db-container). 
 
 # Watch the Video
 Watch this video to get an overview of this developer Journey.(Video yet to be made.)
