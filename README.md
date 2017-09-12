@@ -8,7 +8,7 @@ In this journey we will demonstrate:
 * Setting up ipython notebook on DSX connecting to orientdb using pyorient.
 * Hands-on on the crud operations and extracting insights from graph database
 
-![](doc/source/images/architecture.png)
+![](doc/source/images/Architecture.png)
 
 1. The Kuberntes Cluster on which orientdb is running.
 2. Orientdb instance on kubernetes.
