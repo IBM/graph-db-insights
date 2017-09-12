@@ -146,6 +146,6 @@ Orientdb provides an interactive dashboard orientdb studio for visualisation of 
 * execute the query in the graph editor.
 * results of the query will be in the form of graph. For example, To find the connections of a node in the graphdb i.e. `to find the coworkers of the actor Tom Hanks `, 
 
-![](doc/source/images/worked_with.png)
+![](doc/source/images/worked_With.png)
 
 * You can follow this video tutorial on [orientdb studio](https://www.youtube.com/watch?v=l-OVSjf-vk0&t=7s) created for the purpose of this notebook to demonstrate the results of the queries used in the tutorial.
