@@ -57,6 +57,9 @@ described in detail below.
 1. [Add the data](#4-add-the-data)
 1. [Update the notebook with service credentials](#5-update-the-notebook-with-service-credentials)
 1. [Run the notebook](#6-run-the-notebook)
+1. [Flow of the notebook](#7-flow-of-the-notebook)
+1. [Analyze the results](#8-analyze-the-results)
+
 
 
 ## 1. Get started with orientdb on Data Science Experience using PyOrient.
