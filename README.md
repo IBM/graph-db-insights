@@ -131,6 +131,18 @@ There are several ways to execute the code cells in your notebook:
 
 For this Notebook, To run every cell one by one is recommended.
 
+## 7. Flow of the notebook.
+The notebook has been segregated into various section with each section performing a specific task on the orientdb.
+* The first part of the notebook deals with the installation of the orientdb, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
+* The second consists of the functions used in the notebook. Orientdb, rather that creating the new graph query language `extended SQL` for the purpose of extracting insights and traversing the graph. The functions in the notebook are divided into two categories- utility functions and the core functions. The utility functions are basically to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the orientdb. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in orientdb. The core functions are for operations performed over orientdb.
+* The Third part focuses on how to get insights from the database.
 
+## 8. Analyze the results. 
+Orientdb provides an interactive dashboard orientdb studio for visualisation of the graph.You can run the queries in the browse section of the orientdb studio to get desired insights.The results of the query executed is in form of table and JSON.But they can also be downloaded as csv for further analysis.To visualise the graph created using this notebook, 
+* open the graph editor of the orientdb Studio 
+* execute the query in the graph editor.
+* results of the query will be in the form of graph. For example, To find the connections of a node in the graphdb i.e. `to find the coworkers of the actor Tom Hanks `, 
 
+![](doc/source/images/worked_with.png)
 
+* You can follow this video tutorial on [orientdb studio](https://www.youtube.com/watch?v=l-OVSjf-vk0&t=7s) created for the purpose of this notebook to demonstrate the results of the queries used in the tutorial.
