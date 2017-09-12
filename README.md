@@ -54,7 +54,7 @@ Follow these steps to setup and run this developer journey. The steps are
 described in detail below.
 
 
-1. [Get started with orientdb on Data Science Experience using PyOrient](#1-get-started-with-orientdb-on-data-science-experience-using-pyorient)
+1. [Deploy OrientDB on Kubernetes Cluster](#1-deploy-orientdb-on-kubernetes-cluster)
 1. [Sign up for the Data Science Experience](#2-sign-up-for-the-data-science-experience)
 1. [Create the notebook](#3-create-the-notebook)
 1. [Add the data](#4-add-the-data)
@@ -65,10 +65,8 @@ described in detail below.
 
 
 
-## 1. Get started with orientdb on Data Science Experience using PyOrient.
-PyOrient is a python driver for orientdb.If you are using the Data Science Experience ( DSX) , Setting up the orientdb on kubernetes is important.This is because if you set up the orientdb locally, you won’t able to access it through DSX, as the orientdb console port 2424 and orientdb studio 2480 wouldn’t be exposed on bluemix.Deploy orientdb on kubernetes container using [Deploy Orientdb on Kubernetes]( https://github.com/IBM/deploy-graph-db-container) will expose the ports on bluemix through which orientdb can be accessed from the notebook on data science experience.You can use the `ip-address of your cluster` and node port on which the `port 2424` orientdb console is mapped, to access that orientdb through notebook.However, you can always run the notebook and orientdb on your local system.
-
-Set up the Notebook on Data Science experience with object storage using following steps :
+## 1. Deploy OrientDB on Kubernetes Cluster
+Deploy OrientDB on Kubernetes cluster using [Deploy Orientdb on Kubernetes](https://github.com/IBM/deploy-graph-db-container). It will expose the ports on IBM Bluemix through which OrientDB can be accessed from the Jupyter notebook on IBM DSX. Use the `ip-address of your cluster` and node port `port 2424` on which the orientdb console is mapped, to access that orientdb through Jupyter notebook.
 
 ## 2. Sign up for the Data Science Experience
 
@@ -95,18 +93,21 @@ Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By sig
 and its `Files` tab. 
 * Click `browse` and navigate to `Graphdb-Insights.csv` on your computer.
 * Add the files to Object storage.
-* Repeat the above Steps for `config.json` as well.
 
 ![](doc/source/images/add_file.png)
 
-## 5. Update the notebook with service credentials.
+* Repeat the above steps to upload `config.json` DSX configuration file to Object storage from URL:
+  https://github.com/IBM/graph-db-insights/blob/master/configuration/config.json
+
+
+## 5. Update the notebook with service credentials
 
 ##### Add the Object Storage credentials to the notebook
 * Select the cell below `3. Add your service credentials for Object Storage` section in the notebook to update the credentials for Object Store.
 * Use `Find and Add Data` (look for the `10/01` icon) and its `Files` tab. You should see the file names uploaded earlier. Make sure your active cell is the empty one created earlier. 
 * Select `Insert to code` below config.json and click insert credentials from the dropdown.
 * Select the cells below `4. Loading the Configuration and Data Files.` to load the files used by the notebook.
-* run the cell below `4.1. Loading the config.json` to load the configuration file.
+* Run the cell below `4.1. Loading the config.json` to load the configuration file.
 * Select `Insert to code` below Graphdb-Insights.csv(movie dataset) and click Insert Pandas Dataframe from the dropdown in the next cell `4.2. Loading the Imdb movie data`
 
 ## 6. Run the notebook
@@ -135,16 +136,19 @@ There are several ways to execute the code cells in your notebook:
     panel. Here you can schedule your notebook to be executed once at some future
     time, or repeatedly at your specified interval.
 
-For this Notebook, To run every cell one by one is recommended.
+For this Notebook, to run every cell one by one is recommended.
 
-## 7. Flow of the notebook.
-The notebook has been segregated into various section with each section performing a specific task on the orientdb.
+## 7. Flow of the notebook
+
+The notebook has been divided into various sections with each section performing a specific task on the OrientDB.
+
 * The first part of the notebook deals with the installation of the orientdb, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
-* The second consists of the functions used in the notebook. Orientdb, rather that creating the new graph query language `extended SQL` for the purpose of extracting insights and traversing the graph. The functions in the notebook are divided into two categories- utility functions and the core functions. The utility functions are basically to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the orientdb. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in orientdb. The core functions are for operations performed over orientdb.
-* The Third part focuses on how to get insights from the database.
+* The second part consists of the functions used in the notebook. OrientDB, rather than creating the new graph query language `extended SQL` for the purpose of extracting insights and traversing the graph. The functions in the notebook are divided into two categories - `Utility Functions` and the `Core Functions`. The utility functions are basically to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for operations performed over OrientDB.
+* The Third part focuses on how to get insights from the OrientDB database.
 
-## 8. Analyze the results. 
-Orientdb provides an interactive dashboard orientdb studio for visualisation of the graph.You can run the queries in the browse section of the orientdb studio to get desired insights.The results of the query executed is in form of table and JSON.But they can also be downloaded as csv for further analysis.To visualise the graph created using this notebook, 
+## 8. Analyze the results
+
+Orientdb provides an interactive dashboard orientdb studio for visualisation of the graph. You can run the queries in the browse section of the orientdb studio to get the desired insights. The results of the query executed is in the form of table and JSON. But they can also be downloaded as csv for further analysis. To visualise the graph created using this notebook, 
 * open the graph editor of the orientdb Studio 
 * execute the query in the graph editor.
 * results of the query will be in the form of graph. For example, To find the connections of a node in the graphdb i.e. `to find the coworkers of the actor Tom Hanks `, 
