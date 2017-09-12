@@ -142,7 +142,7 @@ There are several ways to execute the code cells in your notebook:
     panel. Here you can schedule your notebook to be executed once at some future
     time, or repeatedly at your specified interval.
 
-For this Notebook, to run every cell one by one is recommended so as to understand the flow of the notebook and also to comprehend better, the operation performed by each cell on orientdb. 
+For this Notebook, to run every cell one by one is recommended so as to understand the flow of the notebook and also to comprehend  the operation performed by each cell on orientdb better.
 
 ## 7. Flow of the notebook
 
