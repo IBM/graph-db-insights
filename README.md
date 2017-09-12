@@ -10,15 +10,11 @@ In this journey we will demonstrate:
 
 ![](doc/source/images/Architecture.png)
 
-1. The Kuberntes Cluster on which orientdb is running.
-2. Orientdb instance on kubernetes.
-3. Object storage stores the config file and kaggle imdb data.
-4  Config file and data used in the jupyter notebook.
-5. The Jupyter notebook processes the data and generates insights.It can viewed in orientdb Studio.
-6. The Jypyter notebook is powered by Spark.
- 
+1. Set up the orientdb on [kubernetes cluster](https://github.com/IBM/container-journey-template).
+2. Sign up on IBM's [Data Science Experience](http://datascience.ibm.com/) and create the Jupyter notebook.
+3. Upload the config file and kaggle imdb data on the object storage.
+4. Load the config file and movie data in the notebook to perform orientdb operations.
 
-   
 ## Included components
 
 * [Orientdb](http://orientdb.com/orientdb/): A Multi-Model Open Source NoSQL DBMS.
