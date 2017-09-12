@@ -1,33 +1,40 @@
-# Get insights from OrientDB graph database in IBM Data Science Experience.
+# Get insights from OrientDB database using PyOrient on IBM Data Science Experience (DSX)
 
-Graph databases are well-suited for analyzing interconnections, which is why there has been a lot of interest in using graph databases to mine data from social media. Graph databases are also useful for working with data in business disciplines that involve complex relationships and dynamic schema, such as supply chain management, identifying the source of an IP telephony issue and creating "customers who bought this also looked at..." recommendations.
+This journey gives you a head start on how to work with OrientDB database on IBM Data Science Experience(DSX) using PyOrient. IBM Data Science Experience can be used to analyze data using Jupyter notebooks. This journey uses PyOrient module - an OrientDB driver for python to operate on data and to get insights from OrientDB.
 
-This tutorial gives you a head start on how to work with OrientDB database on IBM Data Science Experience(DSX) using pyorient.This journey will help developers get started with various orientdb operations like CRUD, basic traversal and extracting insights using python driver for orientDB- `pyorient`.
+OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...". This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with orientdb, create a new orientdb database, populate database with node, edge, vertices, relations and then execute queries to get more insights from the orientdb database.  
 
 In this journey we will demonstrate:
 * Setting up ipython notebook on DSX connecting to orientdb using pyorient.
-* Hands-on on the crud operations and extracting insights from graph database
+* To perform the CRUD operations and extracting insights from orientdb database.
+
+To achieve this, orientdb instance is created as a cluster using Kubernetes and then IBM DSX is used to work with orientdb. This journey will help developers to get started with various orientdb operations like CRUD, basic traversal and extracting insights using pyorient on IBM DSX.
+
+When the reader has completed this journey, they will understand how to:
+- Create Kubernetes Cluster of OrientDB.
+- Create and Run a Jupyter Notebook in DSX.
+- Run OrientDB queries using PyOrient module in IBM DSX.
+- Visualise the OrientDB result in OrientDB Studio.
+
 
 ![](doc/source/images/Architecture.png)
 
 1. Set up the orientdb on [kubernetes cluster](https://github.com/IBM/container-journey-template).
 2. Sign up on IBM's [Data Science Experience](http://datascience.ibm.com/) and create the Jupyter notebook.
-3. Upload the config file and kaggle imdb data on the object storage.
-4. Load the config file and movie data in the notebook to perform orientdb operations.
+3. Upload the config file and data-set on the object storage.
+4. Load the config file and data-set in the notebook to perform OrientDB operations.
 
 ## Included components
 
 * [Orientdb](http://orientdb.com/orientdb/): A Multi-Model Open Source NoSQL DBMS.
 
-* [IBM Data Science Experience](https://apsportal.ibm.com/analytics): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
+* [IBM Data Science Experience](https://www.ibm.com/bs-en/marketplace/data-science-experience): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
 
 * [Bluemix Object Storage](https://console.ng.bluemix.net/catalog/services/object-storage/?cm_sp=dw-bluemix-_-code-_-devcenter): A Bluemix service that provides an unstructured cloud data store to build and deliver cost effective apps and services with high reliability and fast speed to market.
 
 * [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
 
-* [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov)
-
-* [Bluemix container service](https://console.ng.bluemix.net/catalog/?taxonomyNavigation=apps&category=containers)
+* [Kubernetes Clusters](https://console.ng.bluemix.net/docs/containers/cs_ov.html#cs_ov) (https://console.bluemix.net/containers-kubernetes/launch)
 
 ## Featured technologies
 
