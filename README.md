@@ -1,14 +1,14 @@
 # Get insights from OrientDB database using PyOrient on IBM Data Science Experience (DSX)
 
-OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...".
+The GraphDB Insight Journey gives you a head start on how to work with graph database OrientDB through IBM Data Science Experience(DSX) using PyOrient module - an OrientDB driver for python to operate on data and to get insights from OrientDB. IBM Data Science Experience can be used to analyze data using Jupyter notebooks.
 
-The GraphDB Insight Journey gives you a head start on how to work with graph database OrientDB on IBM Data Science Experience(DSX) using PyOrient module - an OrientDB driver for python to operate on data and to get insights from OrientDB. IBM Data Science Experience can be used to analyze data using Jupyter notebooks. This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with orientdb, create a new orientdb database, populate database with node, edge, vertices, relations and then execute queries to get more insights from the orientdb database.  
+OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...". This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with orientDB, create a new orientDB database, populate database with node, edge, vertices, relations and then execute queries to get more insights from the orientDB database. Unlike other Graph Databases like Neo4j which have their own graph querying language- Cypher, Orientdb have extended SQL to provide support for graph traversal in graph database making it easy for developers familiar with SQL to start exploring garph database for their business needs.
 
 In this journey we will demonstrate:
 * Setting up ipython notebook on DSX connecting to orientdb using pyorient.
 * To perform the CRUD operations and extracting insights from orientdb database.
 
-To achieve this, orientdb instance is created on the Kubernetes Cluster and then orientdb is accessed through IBM DSX. This journey will help developers to get started with various orientdb operations like CRUD, basic traversal and extracting insights using pyorient on IBM DSX.
+To achieve this, orientDB instance is created on the Kubernetes Cluster and then orientDB is accessed through IBM DSX. This journey will help developers to get started with various orientDB operations like CRUD, basic traversal and extracting insights using pyorient on IBM DSX.
 
 When the reader has completed this journey, they will understand how to:
 - Create Kubernetes Cluster of OrientDB.
@@ -120,7 +120,14 @@ and its `Files` tab.
 ![](doc/source/images/pandas.png)
 
 
-## 6. Run the notebook
+## 6. Flow of the notebook
+The notebook has been divided into various sections with each section performing a specific task on the OrientDB.
+-`Setup` which deals with the installation of the orientdb, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
+-`Core functions and Utlitiy Functions`.The utility functions are basically to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for operations performed over OrientDB.
+-`Insights and Visualization` which focuses on  performing various operations on and get insights from the OrientDB database.
+
+
+## 7. Run the notebook
 
 When a notebook is executed, what is actually happening is that each code cell in
 the notebook is executed, in order, from top to bottom.
@@ -148,17 +155,15 @@ There are several ways to execute the code cells in your notebook:
 
 For this Notebook, to run every cell one by one is recommended so as to understand the flow of the notebook and also to comprehend  the operation performed by each cell on orientdb better.
 
-## 7. Flow of the notebook
-
-The notebook has been divided into various sections with each section performing a specific task on the OrientDB.
-
-* The first part(section 1 to 5) of the notebook deals with the installation of the orientdb, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
-* The second part(section 6 & 7 of the notebook) consists of the functions used in the notebook. OrientDB, rather than creating the new graph query language `extended SQL` for the purpose of extracting insights and traversing the graph. The functions in the notebook are divided into two categories - `Utility Functions` and the `Core Functions`. The utility functions are basically to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for operations performed over OrientDB.
-* The Third part(section 8 of the notebook) focuses on  performing various operations on and get insights from the OrientDB database.
-
 ## 8. Analyze the results
 
-Orientdb provides an interactive dashboard orientdb studio for visualisation of the graph. You can run the queries in the browse section of the orientDB studio to get the desired insights.The notebook uses two usecases to demonstrate how to get insights from the orientDB like the most mentioned movie and the clustering of the movies with IMDB rating greater than 7.The same two queries can be executed in the browse section of the OrientDB to analyze the results, check the images for the same.The results of the query executed, is in the form of table and JSON.But they can also be downloaded as csv for further analysis. 
+The notebook uses two usecases to demonstrate how to get insights from the orientDB like `the most mentioned movie` and the `clustering of the movies with IMDb rating greater than 7.` Each Insight has its own function in the notebook.You can make a call to that function to get the results.Check the images shown below:
+
+![](doc/source/images/most_mentioned_notebook.png)
+
+![](doc/source/images/clustering_notebook.png)
+
+Orientdb also provides an interactive dashboard orientdb studio for visualisation of the graph and to view the results of the queries. You can run the queries in the browse section of the orientDB studio to get the desired insights or to create the node and Edges. The same two queries which the notebook uses can be executed in the browse section of the OrientDB to analyze the results, check the images for the same.The results of the query executed, is in the form of table and JSON.But they can also be downloaded as csv for further analysis. 
 
 ![](doc/source/images/movie_rating.png)
 
