@@ -18,11 +18,12 @@ When the reader has completed this journey, they will understand how to:
 
 
 ![](doc/source/images/Architecture.png)
-
-1. Set up the orientdb on [kubernetes cluster](https://github.com/IBM/container-journey-template).
-2. Sign up on IBM's [Data Science Experience](http://datascience.ibm.com/) and create the Jupyter notebook.
-3. Upload the config file and data-set on the object storage.
-4. Load the config file and data-set in the notebook to perform OrientDB operations.
+1. set up the [kubernetes cluster](https://github.com/IBM/container-journey-template) on the bluemix.
+2. Set up the [orientdb on that kubernetes cluster](https://github.com/IBM/deploy-graph-db-container).
+3. Sign up on IBM's [Data Science Experience](http://datascience.ibm.com/) and create the Jupyter notebook powered by Apache Spark.
+4. An instance of the Object Storage service is created and attached to the notebook on notebook's creation.
+5. Upload the config file and data-set on the object storage.
+6. Load the config file and data-set in the notebook to perform OrientDB operations.
 
 ## Included components
 
