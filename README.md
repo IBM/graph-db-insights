@@ -21,7 +21,7 @@ When the reader has completed this journey, they will understand how to:
 1. The developer sets up the  [kubernetes cluster](https://github.com/IBM/container-journey-template) using kubernetes service on IBM Bluemix.
 2. [The orientDB instance is deployed on the kubernetes cluster](https://github.com/IBM/deploy-graph-db-container) created by the developer in the first step with persistent volume, exposing the ports(2424, 2480) used by orientDB on bluemix.
 3. The developer creates a Jupyter notebook on the [IBM Data science experience](http://datascience.ibm.com/) powered by spark. While creation of notebook, an instance of Object Storage is attached to the notebook for storing the data used by it.
-4. The developer uploads the configuration file(config.json) and Kaggle IMDb movie data(graph-insights.csv) in the object storage.
+4. The developer uploads the [configuration file(config.json)](https://github.com/IBM/graph-db-insights/blob/master/configuration/config.json) and [Kaggle IMDb movie data(graph-insights.csv)](https://github.com/IBM/graph-db-insights/tree/master/data) in the object storage.
 5. The credentials of the files from Object Storage are updated in the notebook and files are loaded to create graph database from them.
 6. The notebook communicates with the orientdb through pyorient driver. And various operations are performed on the graph database using functions written in the Jupyter notebook.
 
