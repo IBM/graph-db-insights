@@ -8,7 +8,7 @@ In this journey we will demonstrate:
 * Setting up ipython notebook on DSX connecting to orientdb using pyorient.
 * To perform the CRUD operations and extracting insights from orientdb database.
 
-To achieve this, orientdb instance is created as a cluster using Kubernetes and then IBM DSX is used to work with orientdb. This journey will help developers to get started with various orientdb operations like CRUD, basic traversal and extracting insights using pyorient on IBM DSX.
+To achieve this, orientdb instance is created on the Kubernetes Cluster and then orientdb is accessed through IBM DSX. This journey will help developers to get started with various orientdb operations like CRUD, basic traversal and extracting insights using pyorient on IBM DSX.
 
 When the reader has completed this journey, they will understand how to:
 - Create Kubernetes Cluster of OrientDB.
