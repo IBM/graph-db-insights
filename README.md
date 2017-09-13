@@ -122,9 +122,9 @@ and its `Files` tab.
 
 ## 6. Flow of the notebook
 The notebook has been divided into various sections with each section performing a specific task on the OrientDB.
--`Setup` which deals with the installation of the orientdb, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
--`Core functions and Utlitiy Functions`.The utility functions are basically to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for operations performed over OrientDB.
--`Insights and Visualization` which focuses on  performing various operations on and get insights from the OrientDB database.
+* `Setup` which deals with the installation of the orientdb, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
+* `Core functions and Utlitiy Functions`.The utility functions are basically to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for operations performed over OrientDB.
+* `Insights and Visualization` which focuses on  performing various operations on and get insights from the OrientDB database.
 
 
 ## 7. Run the notebook
