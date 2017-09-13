@@ -1,8 +1,8 @@
 # Get insights from OrientDB database using PyOrient on IBM Data Science Experience (DSX)
 
-This journey gives you a head start on how to work with OrientDB database on IBM Data Science Experience(DSX) using PyOrient. IBM Data Science Experience can be used to analyze data using Jupyter notebooks. This journey uses PyOrient module - an OrientDB driver for python to operate on data and to get insights from OrientDB.
+OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...".
 
-OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...". This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with orientdb, create a new orientdb database, populate database with node, edge, vertices, relations and then execute queries to get more insights from the orientdb database.  
+The GraphDB Insight Journey gives you a head start on how to work with graph database OrientDB on IBM Data Science Experience(DSX) using PyOrient module - an OrientDB driver for python to operate on data and to get insights from OrientDB. IBM Data Science Experience can be used to analyze data using Jupyter notebooks. This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with orientdb, create a new orientdb database, populate database with node, edge, vertices, relations and then execute queries to get more insights from the orientdb database.  
 
 In this journey we will demonstrate:
 * Setting up ipython notebook on DSX connecting to orientdb using pyorient.
@@ -35,7 +35,7 @@ When the reader has completed this journey, they will understand how to:
 
 * [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
 
-* [Kubernetes Clusters](https://console.bluemix.net/containers-kubernetes/launch)
+* [Kubernetes Clusters](https://console.bluemix.net/containers-kubernetes/launch): an open-source system for automating deployment, scaling, and management of containerized applications.
 
 ## Featured technologies
 
