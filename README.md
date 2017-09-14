@@ -157,7 +157,7 @@ For this Notebook, to run every cell one by one is recommended so as to understa
 
 ## 8. Analyze the results
 
-The notebook uses two use cases to demonstrate how to get insights from the orientDB like `the most mentioned movie` and the `clustering of the movies with IMDb rating greater than 7.` Each Insight has its own function in the notebook.You can make a call to that function to get the results.Check the image shown below:
+The notebook uses two use cases to demonstrate how to get insights from the orientDB like `the most mentioned movie` and the `clustering of the movies with IMDb rating greater than 7.` Each Insight has its own function in the notebook. Check the cell with core functions, there you will see both You can make a call to that function to get the results.Check the image shown below:
 
 ![](doc/source/images/most_mentioned_notebook.png)
 
@@ -165,9 +165,10 @@ OrientDB also provides an interactive dashboard orientDB studio for visualizatio
 
 ![](doc/source/images/movie_rating.png)
 
+![](doc/source/images/most_mentioned.png)
+
 ![](doc/source/images/most_mentioned_json.png)
 
-![](doc/source/images/most_mentioned.png)
 
 
 To visualize the graph created by using the functions written in the notebook, 
