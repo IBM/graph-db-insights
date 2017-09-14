@@ -1,8 +1,8 @@
 # Get insights from OrientDB database using PyOrient on IBM Data Science Experience (DSX)
 
-The GraphDB Insight Journey gives you a head start on how to work with graph database OrientDB through IBM Data Science Experience(DSX) using PyOrient module - an OrientDB driver for python to operate on data and to get insights from OrientDB. IBM Data Science Experience can be used to analyze data using Jupyter notebooks.
+The Journey gives you a head start on how to work with graphs in OrientDB through IBM Data Science Experience(DSX) using PyOrient module - an OrientDB driver for python to operate on data and to get insights from OrientDB. IBM Data Science Experience can be used to analyze data using Jupyter notebooks.
 
-OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...". This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with orientDB, create a new orientDB database, populate database with node classes, edge classes, vertices, relations and then execute queries to get more insights from the orientDB database. Unlike other Graph Databases like Neo4j which have their own graph querying language- Cypher, OrientDB have extended SQL to provide support for graph traversal in graph database making it easy for developers familiar with SQL to start exploring graph database for their business needs.
+OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...". This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with orientDB, create a new orientDB database, populate database with node classes, edge classes, vertices, relations and then execute queries to get more insights from the orientDB database. Unlike other Graph Databases, rather than creating new graph query language, OrientDB have extended SQL to provide support for graph traversal in graph database making it easy for developers familiar with SQL to start exploring graph database for their business needs.
 
 In this journey we will demonstrate:
 * Setting up ipython notebook on DSX connecting to orientDB using pyorient.
@@ -11,17 +11,17 @@ In this journey we will demonstrate:
 To achieve this, orientDB instance is created on the Kubernetes Cluster and then it is accessed through IBM DSX. This journey will help developers to get started with various orientDB operations like CRUD, basic traversal and extracting insights using pyorient on IBM DSX.
 
 When the reader has completed this journey, they will understand how to:
-- Create Kubernetes Cluster of OrientDB.
+- Create Kubernetes Cluster and deploy OrientDB on it.
 - Create and Run a Jupyter Notebook in DSX.
 - Run OrientDB queries using PyOrient module in IBM DSX.
 - Visualise the OrientDB result in OrientDB Studio.
 
 
 ![](doc/source/images/Architecture.png)
-1. The developer sets up the  [kubernetes cluster](https://github.com/IBM/container-journey-template) using kubernetes service on IBM Bluemix.
-2. [The orientDB instance is deployed on the kubernetes cluster](https://github.com/IBM/deploy-graph-db-container) created by the developer in the first step with persistent volume, exposing the ports(2424, 2480) used by orientDB on bluemix.
-3. The developer creates a Jupyter notebook on the [IBM Data science experience](http://datascience.ibm.com/) powered by spark. While creation of notebook, an instance of Object Storage is attached to the notebook for storing the data used by the notebook.
-4. The developer uploads the [configuration file(config.json)](https://github.com/IBM/graph-db-insights/blob/master/configuration/config.json) and [Kaggle IMDb movie data(graph-insights.csv)](https://github.com/IBM/graph-db-insights/tree/master/data) in the object storage.
+1. The developer sets up the kubernetes cluster using kubernetes service on IBM Bluemix.
+2. The orientDB instance is deployed on the kubernetes cluster created by the developer in the first step with persistent volume, exposing the ports(2424, 2480) used by orientDB on bluemix.
+3. The developer creates a Jupyter notebook on the powered by spark. While creation of notebook, an instance of Object Storage is attached to the notebook for storing the data used by the notebook.
+4. The developer uploads the configuration file(config.json) and the dataset (graph-insights.csv) in the object storage.
 5. The credentials of the files from Object Storage are updated in the notebook and files are loaded to create graph database from them.
 6. The notebook communicates with the orientDB through pyorient driver. And various operations are performed on the graph database using functions written in the Jupyter notebook.
 
@@ -157,11 +157,11 @@ For this Notebook, to run every cell one by one is recommended so as to understa
 
 ## 8. Analyze the results
 
-The notebook uses two usecases to demonstrate how to get insights from the orientDB like `the most mentioned movie` and the `clustering of the movies with IMDb rating greater than 7.` Each Insight has its own function in the notebook.You can make a call to that function to get the results.Check the image shown below:
+The notebook uses two use cases to demonstrate how to get insights from the orientDB like `the most mentioned movie` and the `clustering of the movies with IMDb rating greater than 7.` Each Insight has its own function in the notebook.You can make a call to that function to get the results.Check the image shown below:
 
 ![](doc/source/images/most_mentioned_notebook.png)
 
-OrientDB also provides an interactive dashboard orientDB studio for visualisation of the graph and to view the results of the queries. You can run the queries in the browse section of the orientDB studio to get the desired insights or to create the node and Edges. The same two queries which the notebook uses can be executed in the browse section of the OrientDB to analyze the results, check the images for the same.The results of the query executed, is in the form of table and JSON.But they can also be downloaded as csv for further analysis. 
+OrientDB also provides an interactive dashboard orientDB studio for visualization of the graph and to view the results of the queries. You can run the queries in the browse section of the orientDB studio to get the desired insights or to create the node and Edges. The same two queries which the notebook uses can be executed in the browse section of the OrientDB to analyze the results, check the screenshot of the orientdb Studio below for the same. The results of the query executed are in the form of table and JSON. But they can also be downloaded as CSV for further analysis. 
 
 ![](doc/source/images/movie_rating.png)
 
@@ -170,10 +170,10 @@ OrientDB also provides an interactive dashboard orientDB studio for visualisatio
 ![](doc/source/images/most_mentioned.png)
 
 
-To visualise the graph created by using the functions written in the notebook, 
+To visualize the graph created by using the functions written in the notebook, 
 * open the graph editor of the orientDB Studio 
 * execute the graph query in the graph editor.
-* results of the query will be in the form of graph. For example, To find the connections of a node in the graphdb i.e. `to find the coworkers of the actor Tom Hanks `, 
+* results of the query will be in the form of the graph. For example, To find the connections of a node in the graphdb i.e. `to find the coworkers of the actor Tom Hanks `, 
 
 ![](doc/source/images/worked_With.png)
 
