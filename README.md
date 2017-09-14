@@ -161,7 +161,7 @@ The notebook uses two use cases to demonstrate how to get insights from the orie
 
 ![](doc/source/images/most_mentioned_notebook.png)
 
-OrientDB also provides an interactive dashboard orientDB studio for visualization of the graph and to view the results of the queries. You can run the queries in the browse section of the orientDB studio to get the desired insights or to create the node and Edges. The same two queries which the notebook uses can be executed in the browse section of the OrientDB to analyze the results, check the screenshot of the orientdb Studio below for the same. The results of the query executed are in the form of table and JSON. But they can also be downloaded as CSV for further analysis. 
+OrientDB also provides an interactive dashboard orientDB studio for visualization of the graph and to view the results of the queries. You can run the queries in the browse section of the orientDB studio to get the desired insights or to create the node and Edges. The same two queries which the notebook uses i.e. `to get the most mentioned movie and the clustering of the movies with IMDb rating greater than 7` can be executed in the browse section of the OrientDB to analyze the results, check the screenshot of the orientdb Studio below for the same. The results of the query executed are in the form of table and JSON. But they can also be downloaded as CSV for further analysis. 
 
 ![](doc/source/images/movie_rating.png)
 
