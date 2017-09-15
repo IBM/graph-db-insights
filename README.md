@@ -125,7 +125,7 @@ and its `Files` tab.
 ## 6. Flow of the notebook
 The notebook has been divided into various sections with each section performing a specific task on the OrientDB.
 * `Setup` which deals with the installation of the OrientDB, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
-* `Utility Functions and Core functions` The notebook creates a graph with two node classes- `person` class and `movie` class. With person class as its attributes as- name, fblikes, role(actor/ director) and movie class as its attributes as - title, year, durationInMins, imdbRating, genre, plotKeywords, numCriticForReviews, movieFacebookLikes. There are two types of relationships involved in connecting the nodes, one is `worked_with`, which is between the two person nodes who have worked togther in the same movie and another one is `acted_in`, which between a person node and movie node for a person who have acted in a particular movie. The utility functions are written to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for operations performed over OrientDB.
+* `Utility Functions and Core functions` The notebook creates a graph with two node classes- `person` class and `movie` class. With person class as its attributes as- name, fblikes, role(actor/ director) and movie class as its attributes as - title, year, durationInMins, imdbRating, genre, plotKeywords, numCriticForReviews, movieFacebookLikes. There are two types of relationships involved in connecting the nodes, one is `worked_with`, which is between the two person nodes who have worked togther in the same movie and another one is `acted_in`, which between a person node and movie node for a person who have acted in a particular movie. The utility functions are written to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for creating database, creating graph as discussed, and get insights from the graph created.
 * `Insights and Visualization` which focuses on  performing various operations on and get insights from the OrientDB database.
 
 
@@ -178,8 +178,6 @@ OrientDB also provides an interactive dashboard OrientDB studio for visualizatio
 #### * run the Query for `most_mentioned` and view the results in the json format
 
 ![](doc/source/images/most_mentioned_json.png)
-
-
 
 To visualize the graph created by using the functions written in the notebook, 
 * open the graph editor of the OrientDB Studio 
