@@ -170,7 +170,7 @@ OrientDB also provides an interactive dashboard orientDB studio for visualizatio
 ![](doc/source/images/movie_rating.png)
 
 
-#### * run the Query for `most_mentioned` and view results in the form of the table
+#### * run both the Queries to get the `most_mentioned` movie and view results in the form of the table
 
 ![](doc/source/images/most_mentioned.png)
 
