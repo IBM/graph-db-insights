@@ -62,8 +62,8 @@ described in detail below.
 1. [Create the notebook](#3-create-the-notebook)
 1. [Add the data](#4-add-the-data)
 1. [Update the notebook with service credentials](#5-update-the-notebook-with-service-credentials)
-1. [Run the notebook](#6-run-the-notebook)
-1. [Flow of the notebook](#7-flow-of-the-notebook)
+1. [Flow of the notebook](#6-flow-of-the-notebook)
+1. [Run the notebook](#7-run-the-notebook)
 1. [Analyze the results](#8-analyze-the-results)
 
 
