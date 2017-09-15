@@ -159,23 +159,23 @@ For this Notebook, to run every cell one by one is recommended so as to understa
 
 ## 8. Analyze the results
 
-The notebook uses two use cases to demonstrate how to get insights from the orientDB like `the most mentioned movie` and the `clustering of the movies with IMDb rating greater than 7.` Each Insight has its own function in the notebook. Check the cell with core functions, you will see both the function for the same. You can make a call to that function to get the results.Check the image shown below:
+The notebook uses two use cases to demonstrate how to get insights from the orientDB like `the most mentioned movie` and the `clustering of the movies with IMDb rating greater than 7`. Each insight has its own function in the notebook. Check the cell with core functions, you will find the functions for the same. You can make a call to the function to get the results. Check the image shown below:
 
 ![](doc/source/images/most_mentioned_notebook.png)
 
-OrientDB also provides an interactive dashboard orientDB studio for visualization of the graph and to view the results of the queries. You can run the queries in the browse section of the orientDB studio to get the desired insights or to create the node and Edges. The same two queries which the notebook uses i.e. `to get the most mentioned movie and the clustering of the movies with IMDb rating greater than 7` can be executed in the browse section of the OrientDB to analyze the results, check the screenshot of the orientdb Studio below for the same. The results of the query executed are in the form of table and JSON. But they can also be downloaded as CSV for further analysis. 
+OrientDB also provides an interactive dashboard orientDB studio for visualization of the graph and to view the results of the queries. You can run the queries in the browse section of the orientDB studio to get the desired insights or to create the node and Edges. The same two queries which the notebook uses i.e. `to get the most mentioned movie and the clustering of the movies with IMDb rating greater than 7` can be executed in the browse section of the OrientDB to analyze the results, check the screenshot of the orientdb Studio below for the same. The results of the query executed are available in the form of table and JSON. And the results can also be downloaded as CSV for further analysis. 
 
-#### * run the Query to `cluster the movies with IMDb rating greater than 7` and view the results in table format.
+#### * run the Query to `cluster the movies with IMDb rating greater than 7` and view the results in table format
 
 ![](doc/source/images/movie_rating.png)
 
 
-#### * run the Query for `most_mentioned` and view results in the form of the table.
+#### * run the Query for `most_mentioned` and view results in the form of the table
 
 ![](doc/source/images/most_mentioned.png)
 
 
-#### * run the Query for `most_mentioned` and view the results in the json format.
+#### * run the Query for `most_mentioned` and view the results in the json format
 
 ![](doc/source/images/most_mentioned_json.png)
 
@@ -184,7 +184,7 @@ OrientDB also provides an interactive dashboard orientDB studio for visualizatio
 To visualize the graph created by using the functions written in the notebook, 
 * open the graph editor of the orientDB Studio 
 * execute the graph query in the graph editor.
-* results of the query will be in the form of the graph. For example, To find the connections of a node in the graphdb i.e. `to find the coworkers of the actor Tom Hanks `, 
+* results of the query will be in the form of the graph. For example, to find the connections of a node in the graphdb i.e. `to find the coworkers of the actor Tom Hanks `. 
 
 ![](doc/source/images/worked_With.png)
 
