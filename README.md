@@ -1,8 +1,8 @@
 # Get insights from OrientDB database using PyOrient on IBM Data Science Experience (DSX)
 
-The Journey gives you a head start on how to work with graphs in OrientDB through IBM Data Science Experience(DSX) using PyOrient module - an OrientDB driver for python to operate on data and to get insights from OrientDB. IBM Data Science Experience can be used to analyze data using Jupyter notebooks.
+This journey gives you a head start on how to work with graphs in OrientDB through IBM Data Science Experience(DSX) using PyOrient module - an OrientDB driver for python to operate on data and to get insights from OrientDB. IBM Data Science Experience can be used to analyze data using Jupyter notebooks.
 
-OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...". This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with orientDB, create a new orientDB database, populate database with node classes, edge classes, vertices, relations and then execute queries to get more insights from the orientDB database. Unlike other Graph Databases, rather than creating new graph query language, OrientDB have extended SQL to provide support for graph traversal in graph database making it easy for developers familiar with SQL to start exploring graph database for their business needs.
+OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...". This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with orientDB, create a new orientDB database, populate database with node classes, edge classes, vertices, relations and then execute queries to get more insights from the orientDB database. OrientDB have extended SQL to provide support for graph traversal in graph database making it easy for developers familiar with SQL to start exploring graph database for their business needs.
 
 In this journey we will demonstrate:
 * Setting up ipython notebook on DSX connecting to orientDB using pyorient.
@@ -12,7 +12,7 @@ To achieve this, orientDB instance is created on the Kubernetes Cluster and then
 
 When the reader has completed this journey, they will understand how to:
 - Create Kubernetes Cluster and deploy OrientDB on it.
-- Create and Run a Jupyter Notebook in DSX.
+- Create and Run a Jupyter Notebook in IBM DSX.
 - Run OrientDB queries using PyOrient module in IBM DSX.
 - Visualise the OrientDB result in OrientDB Studio.
 
@@ -20,10 +20,10 @@ When the reader has completed this journey, they will understand how to:
 ![](doc/source/images/Architecture.png)
 1. The developer sets up the kubernetes cluster using kubernetes service on IBM Bluemix.
 2. The orientDB instance is deployed on the kubernetes cluster created by the developer in the first step with persistent volume, exposing the ports(2424, 2480) used by orientDB on bluemix.
-3. The developer creates a Jupyter notebook on the powered by spark. While creation of notebook, an instance of Object Storage is attached to the notebook for storing the data used by the notebook.
-4. The developer uploads the configuration file(config.json) and the dataset (graph-insights.csv) in the object storage.
-5. The credentials of the files from Object Storage are updated in the notebook and files are loaded to create graph database from them.
-6. The notebook communicates with the orientDB through pyorient driver. And various operations are performed on the graph database using functions written in the Jupyter notebook.
+3. The developer creates a Jupyter notebook on the IBM DSX powered by spark. While creation of notebook, an instance of Object Storage is attached to the notebook for storing the data used by the notebook.
+4. The developer uploads the configuration file (config.json) and the dataset (graph-insights.csv) in the object storage.
+5. The credentials of Object Storage are updated in the notebook and the files from Object Storage are loaded to create graph  from them in OrientDB.
+6. The notebook communicates with the orientDB through pyorient driver. And various operations are performed on the OrientDB  using functions written in the Jupyter notebook.
 
 ## Included components
 
@@ -40,6 +40,7 @@ When the reader has completed this journey, they will understand how to:
 ## Featured technologies
 
 * [Data Science](https://medium.com/ibm-data-science-experience/): Systems and scientific methods to analyze structured and unstructured data in order to extract knowledge and insights.
+
 * [Graph Database](https://en.wikipedia.org/wiki/Graph_database): a graph database is a database that uses graph structures for semantic queries with nodes, edges and properties to represent and store data. A key concept of the system is the graph (or edge or relationship), which directly relates data items in the store. The relationships allow data in the store to be linked together directly, and in many cases retrieved with one operation.
 
 ## Prerequisite
