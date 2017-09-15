@@ -1,4 +1,4 @@
-# Get Insights from OrientDB database using PyOrient on IBM Data Science Experience (DSX)
+# Get Insights from OrientDB database using PyOrient through IBM Data Science Experience (DSX)
 
 This journey gives you a head start on how to work with graphs in OrientDB through IBM Data Science Experience(DSX) using PyOrient module - an python driver for OrientDB to operate on data and to get insights from OrientDB. IBM Data Science Experience can be used to analyze data using Jupyter notebooks.
 
