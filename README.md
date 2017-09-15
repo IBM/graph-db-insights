@@ -41,7 +41,7 @@ When the reader has completed this journey, they will understand how to:
 
 * [Data Science](https://medium.com/ibm-data-science-experience/): Systems and scientific methods to analyze structured and unstructured data in order to extract knowledge and insights.
 
-* [Graph Database](https://en.wikipedia.org/wiki/Graph_database): a graph database is a database that uses graph structures for semantic queries with nodes, edges and properties to represent and store data. A key concept of the system is the graph (or edge or relationship), which directly relates data items in the store. The relationships allow data in the store to be linked together directly, and in many cases retrieved with one operation.
+* [Graph Database](https://en.wikipedia.org/wiki/Graph_database): A graph database is a database that uses graph structures for semantic queries with nodes, edges and properties to represent and store data. A key concept of the system is the graph (or edge or relationship), which directly relates data items in the store. The relationships allow data in the store to be linked together directly, and in many cases retrieved with one operation.
 
 ## Prerequisite
 
@@ -115,9 +115,9 @@ and its `Files` tab.
 
 ![](doc/source/images/config.png)
 
-* Select the cells below `4. Loading the Configuration and Data Files.` to load the files used by the notebook.
+* Select the cells below `4. Loading the Configuration and Data Files` to load the files used by the notebook.
 * Run the cell below `4.1. Loading the config.json` to load the configuration file.
-* Select `Insert to code` below Graphdb-Insights.csv(movie dataset) and click Insert Pandas Dataframe from the dropdown in the next cell `4.2. Loading the Imdb movie data`
+* Select `Insert to code` below Graphdb-Insights.csv(movie dataset) and click Insert Pandas Dataframe from the dropdown in the next cell `4.2. Loading the IMDb movie data`
 
 ![](doc/source/images/pandas.png)
 
@@ -125,7 +125,7 @@ and its `Files` tab.
 ## 6. Flow of the notebook
 The notebook has been divided into various sections with each section performing a specific task on the OrientDB.
 * `Setup` which deals with the installation of the orientDB, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
-* `Core functions and Utlitiy Functions`.The utility functions are basically to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for operations performed over OrientDB.
+* `Utility Functions and Core functions` The utility functions are written to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for operations performed over OrientDB.
 * `Insights and Visualization` which focuses on  performing various operations on and get insights from the OrientDB database.
 
 
