@@ -48,7 +48,8 @@ When the reader has completed this journey, they will understand how to:
 Create a Kubernetes cluster with [IBM Bluemix Container Service](https://console.bluemix.net/containers-kubernetes/launch) to deploy in cloud. Deploy OrientDB on Kubernetes Cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). 
 
 # Watch the Video
-Watch this video to get an overview of this developer Journey.(Video yet to be made.)
+Watch this video to get an overview of this developer Journey.
+https://www.youtube.com/watch?v=oGj2Bi_Viqo&t=15s
 
 
 # Steps
