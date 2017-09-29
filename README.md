@@ -110,9 +110,10 @@ and its `Files` tab.
 ## 5. Update the notebook with service credentials
 
 ##### Add the Object Storage credentials to the notebook
-* Select the cell below `3. Add your service credentials for Object Storage` section in the notebook to update the credentials for Object Store.
+* Select the cell below `3. Add your service credentials for Object Storage` section in the notebook to update the credentials for Object Store. 
 * Use `Find and Add Data` (look for the `10/01` icon) and its `Files` tab. You should see the file names uploaded earlier. Make sure your active cell is the empty one created earlier. 
-* Select `Insert to code` below config.json and click insert credentials from the dropdown.
+* Select `Insert to code` below config.json and click insert credentials from the dropdown.Please rename the variable to `credentials_1` if the name is different.
+* Run the cell below `3. Add your service credentials for Object Storage` to load the variable `credentials_1`.
 
 ![](doc/source/images/config.png)
 
