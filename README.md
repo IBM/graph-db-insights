@@ -49,8 +49,7 @@ Create a Kubernetes cluster with [IBM Bluemix Container Service](https://console
 
 # Watch the Video
 Watch this video to get an overview of this developer Journey.
-https://www.youtube.com/watch?v=oGj2Bi_Viqo&t=15s
-
+[![](doc/source/images/THUMBNAILFORVIDEO.jpg)](https://www.youtube.com/watch?v=oGj2Bi_Viqo&t=15s)
 
 # Steps
 
