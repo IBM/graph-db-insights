@@ -109,15 +109,12 @@ and its `Files` tab.
 ## 5. Update the notebook with service credentials
 
 ##### Add the Object Storage credentials to the notebook
-* Select the cell below `3. Add your service credentials for Object Storage` section in the notebook to update the credentials for Object Store. 
 * Use `Find and Add Data` (look for the `10/01` icon) and its `Files` tab. You should see the file names uploaded earlier. Make sure your active cell is the empty one created earlier. 
 * Select `Insert to code` below config.json and click insert credentials from the dropdown. Please rename the variable to `credentials_1` if the name is different.
-* Run the cell below `3. Add your service credentials for Object Storage` to load the variable `credentials_1`.
-
+* Select the cell below `3. Add your service credentials for Object Storage` section in the notebook to update the credentials for Object Store. 
 ![](doc/source/images/config.png)
 
 * Select the cells below `4. Loading the Configuration and Data Files` to load the files used by the notebook.
-* Run the cell below `4.1. Loading the config.json` to load the configuration file.
 * Select `Insert to code` below Graphdb-Insights.csv(movie dataset) and click Insert Pandas Dataframe from the dropdown in the next cell `4.2. Loading the IMDb movie data`
 
 ![](doc/source/images/pandas.png)
