@@ -69,11 +69,12 @@ described in detail below.
 
 
 ## 1. Deploy OrientDB on Kubernetes Cluster
-Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). It will expose the ports on IBM Bluemix through which OrientDB can be accessed from the Jupyter notebook on IBM DSX. Use the `ip-address of your cluster` and node port `port 2424` on which the OrientDB console is mapped, to access that OrientDB through Jupyter notebook. In the step 5 of the notebook `Connect to OrientDB`, uncomment this line in the cell. Make sure you put the ip-address in the double quotes and replace the content in the angular with the port number to connect to the orientdb.
+Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). It will expose the ports on IBM Bluemix through which OrientDB can be accessed from the Jupyter notebook on IBM DSX. Use the `ip-address of your cluster` and node port `port 2424` on which the OrientDB console is mapped, to access that OrientDB through Jupyter notebook. 
 
 ```bash 
 client = pyorient.OrientDB("ip-address-of-the-kubernetes-cluster",<node-port mapped to port 2424 of orientDB>)
 ```
+In the step 5 of the notebook `Connect to OrientDB`, uncomment the above line in the cell. Make sure you put the ip-address in the double quotes and replace the content in the angular with the port number to connect to the orientdb, to avoid any syntax errors.
 
 ## 2. Sign up for the Data Science Experience
 
