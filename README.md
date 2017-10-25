@@ -93,7 +93,7 @@ Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By sig
   https://github.com/IBM/graph-db-insights/blob/master/configuration/config.json, make sure you update the config file with 
   username and password that you have setup for orientdb in the first step `1. Deploy OrientDB on Kubernetes Cluster`
 
-* In the step 5 of the notebook `Connect to OrientDB`, uncomment the above line in the cell. Make sure you put the ip-address in the double quotes and replace the content in the angular with the port number to connect to the orientdb, to avoid any syntax errors.
+* In the step 5 of the notebook `Connect to OrientDB`, uncomment the line highlighted below in the cell. Make sure you put the ip-address in the double quotes and replace the content in the angular with the port number to connect to the orientdb, to avoid any syntax errors.
 
 ```bash 
 client = pyorient.OrientDB("ip-address-of-the-kubernetes-cluster",<node-port mapped to port 2424 of orientDB>)
