@@ -71,11 +71,6 @@ described in detail below.
 ## 1. Deploy OrientDB on Kubernetes Cluster
 Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). It will expose the ports on IBM Bluemix through which OrientDB can be accessed from the Jupyter notebook on IBM DSX. Use the `ip-address of your cluster` and node port `port 2424` on which the OrientDB console is mapped, to access that OrientDB through Jupyter notebook. 
 
-```bash 
-client = pyorient.OrientDB("ip-address-of-the-kubernetes-cluster",<node-port mapped to port 2424 of orientDB>)
-```
-In the step 5 of the notebook `Connect to OrientDB`, uncomment the above line in the cell. Make sure you put the ip-address in the double quotes and replace the content in the angular with the port number to connect to the orientdb, to avoid any syntax errors.
-
 ## 2. Sign up for the Data Science Experience
 
 Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By signing up for the Data Science Experience, two services: ``DSX-Spark`` and ``DSX-ObjectStore`` will be created in your Bluemix account.
@@ -93,6 +88,16 @@ Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By sig
 
 ![](doc/source/images/create_notebook.png) 
 
+### 3.1. Additional notes for the notebook.
+* Before uploading the  upload `config.json` DSX configuration file to Object storage from URL:
+  https://github.com/IBM/graph-db-insights/blob/master/configuration/config.json, make sure you update the config file with 
+  username and password that you have setup for orientdb in the first step `1. Deploy OrientDB on Kubernetes Cluster`
+
+* In the step 5 of the notebook `Connect to OrientDB`, uncomment the above line in the cell. Make sure you put the ip-address in the double quotes and replace the content in the angular with the port number to connect to the orientdb, to avoid any syntax errors.
+
+```bash 
+client = pyorient.OrientDB("ip-address-of-the-kubernetes-cluster",<node-port mapped to port 2424 of orientDB>)
+```
 
 ## 4. Add the data 
 
