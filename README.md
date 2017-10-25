@@ -89,15 +89,8 @@ Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By sig
 ![](doc/source/images/create_notebook.png) 
 
 ### 3.1. Additional notes for the notebook.
-* Before uploading the  upload `config.json` DSX configuration file to Object storage from URL:
-  https://github.com/IBM/graph-db-insights/blob/master/configuration/config.json, make sure you update the config file with 
+* Before uploading the `config.json` DSX configuration file to Object storage, make sure you update the config file with 
   username and password that you have setup for orientdb in the first step `1. Deploy OrientDB on Kubernetes Cluster`
-
-* In the step 5 of the notebook `Connect to OrientDB`, uncomment the line highlighted below in the cell. Make sure you put the ip-address in the double quotes and replace the content in the angular with the port number to connect to the orientdb, to avoid any syntax errors.
-
-```bash 
-client = pyorient.OrientDB("ip-address-of-the-kubernetes-cluster",<node-port mapped to port 2424 of orientDB>)
-```
 
 ## 4. Add the data 
 
@@ -121,11 +114,11 @@ and its `Files` tab.
 ##### Add the Object Storage credentials to the notebook
 * Use `Find and Add Data` (look for the `10/01` icon) and its `Files` tab. You should see the file names uploaded earlier. Make sure your active cell is the empty one created earlier. 
 * Select `Insert to code` below config.json and click insert credentials from the dropdown. Please rename the variable to `credentials_1` if the name is different.
-* Select the cell below `3. Add your service credentials for Object Storage` section in the notebook to update the credentials for Object Store. 
+* Select the cell below `3. Add your service credentials for Object Storage` section in the notebook to update the credentials for Object Store.
+
 ![](doc/source/images/config.png)
 
-* Select the cells below `4. Loading the Configuration and Data Files` to load the files used by the notebook.
-* Select `Insert to code` below Graphdb-Insights.csv(movie dataset) and click Insert Pandas Dataframe from the dropdown in the next cell `4.2. Loading the IMDb movie data`
+* Select `Insert to code` below Graphdb-Insights.csv(movie dataset) and click Insert Pandas Dataframe from the dropdown in the next cell `4.2. Loading the IMDb movie data`.
 
 ![](doc/source/images/pandas.png)
 
