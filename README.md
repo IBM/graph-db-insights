@@ -118,7 +118,7 @@ and its `Files` tab.
 
 ![](doc/source/images/config.png)
 
-* Select `Insert to code` below Graphdb-Insights.csv(movie dataset) and click Insert Pandas Dataframe from the dropdown in the next cell `4.2. Loading the IMDb movie data`.
+* Select `Insert to code` below Graphdb-Insights.csv(movie dataset) and click Insert Pandas Dataframe from the dropdown in the empty cell below `4.2. Loading the IMDb movie data`.
 
 ![](doc/source/images/pandas.png)
 
