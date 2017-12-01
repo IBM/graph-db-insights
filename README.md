@@ -45,7 +45,7 @@ When the reader has completed this journey, they will understand how to:
 
 ## Prerequisite
 
-Create a Kubernetes cluster with [IBM Bluemix Container Service](https://console.bluemix.net/containers-kubernetes/launch) to deploy in cloud. Deploy OrientDB on Kubernetes Cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). 
+Create a Kubernetes cluster with [IBM Bluemix Container Service](https://console.bluemix.net/containers-kubernetes/launch) to deploy in cloud. Deploy OrientDB on Kubernetes Cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container).
 
 # Watch the Video
 Watch this video to get an overview of this developer Journey.
@@ -69,7 +69,7 @@ described in detail below.
 
 
 ## 1. Deploy OrientDB on Kubernetes Cluster
-Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). It will expose the ports on IBM Bluemix through which OrientDB can be accessed from the Jupyter notebook on IBM DSX. Use the `ip-address of your cluster` and node port `port 2424` on which the OrientDB console is mapped, to access that OrientDB through Jupyter notebook. 
+Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). It will expose the ports on IBM Bluemix through which OrientDB can be accessed from the Jupyter notebook on IBM DSX. Use the `ip-address of your cluster` and node port `port 2424` on which the OrientDB console is mapped, to access that OrientDB through Jupyter notebook.
 
 ## 2. Sign up for the Data Science Experience
 
@@ -77,7 +77,7 @@ Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By sig
 
 ## 3. Create the notebook
 
-* Open [IBM Data Science Experience](https://apsportal.ibm.com/analytics). 
+* Open [IBM Data Science Experience](https://apsportal.ibm.com/analytics).
 * Use the menu on the top to select `Projects` and then `Default Project`.
 * Click on `Add notebooks` (upper right) to create a notebook.
 * Select the `From URL` tab.
@@ -86,20 +86,20 @@ Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By sig
 * Enter this Notebook URL: https://github.com/IBM/graph-db-insights/blob/master/notebooks/graphdb-insights.ipynb
 * Click the `Create Notebook` button.
 
-![](doc/source/images/create_notebook.png) 
+![](doc/source/images/create_notebook.png)
 
 ### 3.1. Additional notes for the notebook.
-* Before uploading the `config.json` DSX configuration file to Object storage, make sure you update the config file with 
+* Before uploading the `config.json` DSX configuration file to Object storage, make sure you update the config file with
   username and password that you have setup for orientdb in the first step `1. Deploy OrientDB on Kubernetes Cluster`
 
-## 4. Add the data 
+## 4. Add the data
 
 ##### Add the data to the notebook
 * Please download the files from :
  https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset .
 * Trim the data to 600 rows for the purpose of this tutorial and Rename the file  `Graphdb-Insights.csv`
 * From your project page in DSX, click `Find and Add Data` (look for the `10/01` icon)
-and its `Files` tab. 
+and its `Files` tab.
 * Click `browse` and navigate to `Graphdb-Insights.csv` on your computer.
 * Add the files to Object storage.
 
@@ -112,7 +112,7 @@ and its `Files` tab.
 ## 5. Update the notebook with service credentials
 
 ##### Add the Object Storage credentials to the notebook
-* Use `Find and Add Data` (look for the `10/01` icon) and its `Files` tab. You should see the file names uploaded earlier. Make sure your active cell is the empty one created earlier. 
+* Use `Find and Add Data` (look for the `10/01` icon) and its `Files` tab. You should see the file names uploaded earlier. Make sure your active cell is the empty one created earlier.
 * Select `Insert to code` below config.json and click insert credentials from the dropdown. Please rename the variable to `credentials_1` if the name is different.
 * Select the cell below `3. Add your service credentials for Object Storage` section in the notebook to update the credentials for Object Store.
 
@@ -164,7 +164,7 @@ The notebook uses two use cases to demonstrate how to get insights from the Orie
 
 ![](doc/source/images/most_mentioned_notebook.png)
 
-OrientDB also provides an interactive dashboard OrientDB studio for visualization of the graph and to view the results of the queries. You can run the queries in the browse section of the OrientDB studio to get the desired insights or to create the node and Edges. The same two queries which the notebook uses i.e. `to get the most mentioned movie and the clustering of the movies with IMDb rating greater than 7` can be executed in the browse section of the OrientDB to analyze the results, check the screenshot of the OrientDB Studio below for the same. The results of the query executed are available in the form of table and JSON. And the results can also be downloaded as CSV for further analysis. 
+OrientDB also provides an interactive dashboard OrientDB studio for visualization of the graph and to view the results of the queries. You can run the queries in the browse section of the OrientDB studio to get the desired insights or to create the node and Edges. The same two queries which the notebook uses i.e. `to get the most mentioned movie and the clustering of the movies with IMDb rating greater than 7` can be executed in the browse section of the OrientDB to analyze the results, check the screenshot of the OrientDB Studio below for the same. The results of the query executed are available in the form of table and JSON. And the results can also be downloaded as CSV for further analysis.
 
 #### * run the Query to `cluster the movies with IMDb rating greater than 7` and view the results in table format
 
@@ -180,10 +180,10 @@ OrientDB also provides an interactive dashboard OrientDB studio for visualizatio
 
 ![](doc/source/images/most_mentioned_json.png)
 
-To visualize the graph created by using the functions written in the notebook, 
-* open the graph editor of the OrientDB Studio 
+To visualize the graph created by using the functions written in the notebook,
+* open the graph editor of the OrientDB Studio
 * execute the graph query in the graph editor.
-* results of the query will be in the form of the graph. For example, to find the connections of a node in the graphdb i.e. `to find the coworkers of the actor Tom Hanks `. 
+* results of the query will be in the form of the graph. For example, to find the connections of a node in the graphdb i.e. `to find the coworkers of the actor Tom Hanks `.
 
 ![](doc/source/images/worked_With.png)
 
