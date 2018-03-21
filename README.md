@@ -1,26 +1,26 @@
-# Get Insights from OrientDB database using PyOrient through IBM Data Science Experience (DSX)
+# Get Insights from OrientDB database using PyOrient through IBM Watson Studio
 
-This journey gives you a head start on how to work with graphs in OrientDB through IBM Data Science Experience(DSX) using PyOrient module - a python driver for OrientDB to operate on data and to get insights from OrientDB. IBM Data Science Experience can be used to analyze data using Jupyter notebooks.
+This journey gives you a head start on how to work with graphs in OrientDB through IBM Watson Studio(Watson Studio) using PyOrient module - a python driver for OrientDB to operate on data and to get insights from OrientDB. IBM Watson Studio can be used to analyze data using Jupyter notebooks.
 
 OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...". This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with OrientDB, create a new OrientDB database, populate database with node classes, edge classes, vertices, relations and then execute queries to get insights from the data in OrientDB database. OrientDB have extended SQL to provide support for graph traversal in graph database making it easy for developers familiar with SQL to start exploring graph database for their business needs.
 
 In this journey we will demonstrate:
-* Setting up ipython notebook on DSX connecting to OrientDB using PyOrient.
+* Setting up ipython notebook on Watson Studio connecting to OrientDB using PyOrient.
 * To perform the CRUD operations and extracting insights from OrientDB database.
 
-To achieve this, OrientDB instance is created on the Kubernetes Cluster and then it is accessed through IBM DSX. This journey will help developers to get started with various OrientDB operations like CRUD, basic traversal and extracting insights using PyOrient on IBM DSX.
+To achieve this, OrientDB instance is created on the Kubernetes Cluster and then it is accessed through IBM Watson Studio. This journey will help developers to get started with various OrientDB operations like CRUD, basic traversal and extracting insights using PyOrient on IBM Watson Studio.
 
 When the reader has completed this journey, they will understand how to:
 - Create Kubernetes Cluster and deploy OrientDB on it.
-- Create and Run a Jupyter Notebook in IBM DSX.
-- Run OrientDB queries using PyOrient module in IBM DSX.
+- Create and Run a Jupyter Notebook in IBM Watson Studio.
+- Run OrientDB queries using PyOrient module in IBM Watson Studio.
 - Visualise the OrientDB result in OrientDB Studio.
 
 
 ![](doc/source/images/Architecture.png)
 1. The developer sets up the Kubernetes cluster using Kubernetes service on IBM Bluemix.
 2. The OrientDB instance is deployed on the Kubernetes cluster created by the developer in the first step with persistent volume, exposing the ports(2424, 2480) used by OrientDB on bluemix.
-3. The developer creates a Jupyter notebook on the IBM DSX powered by spark. While creation of notebook, an instance of Object Storage is attached to the notebook for storing the data used by the notebook.
+3. The developer creates a Jupyter notebook on the IBM Watson Studio powered by spark. While creation of notebook, an instance of Object Storage is attached to the notebook for storing the data used by the notebook.
 4. The developer uploads the configuration file (config.json) and the dataset (graph-insights.csv) in the object storage.
 5. The credentials of Object Storage are updated in the notebook and the files from Object Storage are loaded to create graph  from them in OrientDB.
 6. The notebook communicates with the OrientDB through PyOrient driver. And various operations are performed on the OrientDB  using functions written in the Jupyter notebook.
@@ -29,7 +29,7 @@ When the reader has completed this journey, they will understand how to:
 
 * [OrientDB](http://orientdb.com/orientdb/): A Multi-Model Open Source NoSQL DBMS.
 
-* [IBM Data Science Experience](https://apsportal.ibm.com/analytics): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
+* [IBM Watson Studio](https://apsportal.ibm.com/analytics): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
 
 * [Bluemix Object Storage](https://console.ng.bluemix.net/catalog/services/object-storage/?cm_sp=dw-bluemix-_-code-_-devcenter): A Bluemix service that provides an unstructured cloud data store to build and deliver cost effective apps and services with high reliability and fast speed to market.
 
@@ -58,7 +58,7 @@ described in detail below.
 
 
 1. [Deploy OrientDB on Kubernetes Cluster](#1-deploy-orientdb-on-kubernetes-cluster)
-1. [Sign up for the Data Science Experience](#2-sign-up-for-the-data-science-experience)
+1. [Sign up for the Watson Studio](#2-sign-up-for-the-data-science-experience)
 1. [Create the notebook](#3-create-the-notebook)
 1. [Add the data](#4-add-the-data)
 1. [Update the notebook with service credentials](#5-update-the-notebook-with-service-credentials)
@@ -69,15 +69,15 @@ described in detail below.
 
 
 ## 1. Deploy OrientDB on Kubernetes Cluster
-Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). It will expose the ports on IBM Bluemix through which OrientDB can be accessed from the Jupyter notebook on IBM DSX. Use the `ip-address of your cluster` and node port `port 2424` on which the OrientDB console is mapped, to access that OrientDB through Jupyter notebook.
+Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). It will expose the ports on IBM Bluemix through which OrientDB can be accessed from the Jupyter notebook on IBM Watson Studio. Use the `ip-address of your cluster` and node port `port 2424` on which the OrientDB console is mapped, to access that OrientDB through Jupyter notebook.
 
-## 2. Sign up for the Data Science Experience
+## 2. Sign up for the Watson Studio
 
-Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By signing up for the Data Science Experience, two services: ``DSX-Spark`` and ``DSX-ObjectStore`` will be created in your Bluemix account.
+Sign up for IBM's [Watson Studio](http://datascience.ibm.com/). By signing up for the Watson Studio, two services: ``Watson Studio-Spark`` and ``Watson Studio-ObjectStore`` will be created in your Bluemix account.
 
 ## 3. Create the notebook
 
-* Open [IBM Data Science Experience](https://apsportal.ibm.com/analytics).
+* Open [IBM Watson Studio](https://apsportal.ibm.com/analytics).
 * Use the menu on the top to select `Projects` and then `Default Project`.
 * Click on `Add notebooks` (upper right) to create a notebook.
 * Select the `From URL` tab.
@@ -89,7 +89,7 @@ Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By sig
 ![](doc/source/images/create_notebook.png)
 
 ### 3.1. Additional notes for the notebook.
-* Before uploading the `config.json` DSX configuration file to Object storage, make sure you update the config file with
+* Before uploading the `config.json` Watson Studio configuration file to Object storage, make sure you update the config file with
   username and password that you have setup for orientdb in the first step `1. Deploy OrientDB on Kubernetes Cluster`
 
 ## 4. Add the data
@@ -98,14 +98,14 @@ Sign up for IBM's [Data Science Experience](http://datascience.ibm.com/). By sig
 * Please download the files from :
  https://www.kaggle.com/deepmatrix/imdb-5000-movie-dataset .
 * Trim the data to 600 rows for the purpose of this tutorial and Rename the file  `Graphdb-Insights.csv`
-* From your project page in DSX, click `Find and Add Data` (look for the `10/01` icon)
+* From your project page in Watson Studio, click `Find and Add Data` (look for the `10/01` icon)
 and its `Files` tab.
 * Click `browse` and navigate to `Graphdb-Insights.csv` on your computer.
 * Add the files to Object storage.
 
 ![](doc/source/images/add_file.png)
 
-* Repeat the above steps to upload `config.json` DSX configuration file to Object storage from URL:
+* Repeat the above steps to upload `config.json` Watson Studio configuration file to Object storage from URL:
   https://github.com/IBM/graph-db-insights/blob/master/configuration/config.json
 
 
