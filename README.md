@@ -1,5 +1,7 @@
 # Get Insights from OrientDB database using PyOrient through IBM Watson Studio
 
+> Data Science Experience is now Watson Studio. Although some images in this code pattern may show the service as Data Science Experience, the steps and processes will still work.
+
 This journey gives you a head start on how to work with graphs in OrientDB through IBM Watson Studio using PyOrient module - a python driver for OrientDB to operate on data and to get insights from OrientDB. IBM Watson Studio can be used to analyze data using Jupyter notebooks.
 
 OrientDB is a multi-model database, supporting graph, document, key/value, and object models, but the relationships are managed as in graph databases with direct connections between records. Graph databases are well-suited for analysing interconnections like to mine data from social media. It is also useful for working with data in business disciplines that involve complex relationships and dynamic schema and creating recommendations like "customers who bought this also looked at...". This journey will help you to understand end-to-end flow starting from downloading the data-set, cleansing of data, extract entities and relations from the data-set, connect with OrientDB, create a new OrientDB database, populate database with node classes, edge classes, vertices, relations and then execute queries to get insights from the data in OrientDB database. OrientDB have extended SQL to provide support for graph traversal in graph database making it easy for developers familiar with SQL to start exploring graph database for their business needs.
@@ -16,9 +18,9 @@ When the reader has completed this journey, they will understand how to:
 - Run OrientDB queries using PyOrient module in IBM Watson Studio.
 - Visualise the OrientDB result in OrientDB Studio.
 
-
 ![](doc/source/images/Architecture.png)
-1. The developer sets up the Kubernetes cluster using Kubernetes service on IBM Bluemix.
+
+1. The developer sets up the Kubernetes cluster using Kubernetes service on IBM Cloud.
 2. The OrientDB instance is deployed on the Kubernetes cluster created by the developer in the first step with persistent volume, exposing the ports(2424, 2480) used by OrientDB on bluemix.
 3. The developer creates a Jupyter notebook on the IBM Watson Studio powered by spark. While creation of notebook, an instance of Object Storage is attached to the notebook for storing the data used by the notebook.
 4. The developer uploads the configuration file (config.json) and the dataset (graph-insights.csv) in the object storage.
@@ -31,7 +33,7 @@ When the reader has completed this journey, they will understand how to:
 
 * [IBM Watson Studio](https://dataplatform.ibm.com): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
 
-* [Bluemix Object Storage](https://console.ng.bluemix.net/catalog/services/object-storage/?cm_sp=dw-bluemix-_-code-_-devcenter): A Bluemix service that provides an unstructured cloud data store to build and deliver cost effective apps and services with high reliability and fast speed to market.
+* [IBM Cloud Object Storage](https://console.ng.bluemix.net/catalog/services/object-storage/): An IBM Cloud service that provides an unstructured cloud data store to build and deliver cost effective apps and services with high reliability and fast speed to market.
 
 * [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
 
@@ -45,7 +47,7 @@ When the reader has completed this journey, they will understand how to:
 
 ## Prerequisite
 
-Create a Kubernetes cluster with [IBM Bluemix Container Service](https://console.bluemix.net/containers-kubernetes/launch) to deploy in cloud. Deploy OrientDB on Kubernetes Cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container).
+Create a Kubernetes cluster with [IBM Cloud Container Service](https://console.bluemix.net/containers-kubernetes/launch) to deploy in cloud. Deploy OrientDB on Kubernetes Cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container).
 
 # Watch the Video
 Watch this video to get an overview of this developer Journey.
@@ -69,27 +71,27 @@ described in detail below.
 
 
 ## 1. Deploy OrientDB on Kubernetes Cluster
-Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). It will expose the ports on IBM Bluemix through which OrientDB can be accessed from the Jupyter notebook on IBM Watson Studio. Use the `ip-address of your cluster` and node port `port 2424` on which the OrientDB console is mapped, to access that OrientDB through Jupyter notebook.
+Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container). It will expose the ports on IBM Cloud through which OrientDB can be accessed from the Jupyter notebook on IBM Watson Studio. Use the `ip-address of your cluster` and node port `port 2424` on which the OrientDB console is mapped, to access that OrientDB through Jupyter notebook.
 
-## 2. Sign up for the Watson Studio
-
-Sign up for IBM's [Watson Studio](http://datascience.ibm.com/). By signing up for the Watson Studio, two services: ``Apache Spark`` and ``Object Storage`` will be created in your Bluemix account.
+## 2. Sign up for Watson Studio
+      
+Sign up for IBM's [Watson Studio](http://datascience.ibm.com/). By creating a project in Watson Studio a free tier ``Object Storage`` service will be created in your IBM Cloud account.
 
 ## 3. Create the notebook
 
 * Open [IBM Watson Studio](https://dataplatform.ibm.com).
-* Use the menu on the top to select `Projects` and then `Default Project`.
-* Click on `Add notebooks` (upper right) to create a notebook.
+* Click on `Create notebook` to create a notebook.
 * Select the `From URL` tab.
 * Enter a name for the notebook.
 * Optionally, enter a description for the notebook.
 * Enter this Notebook URL: https://github.com/IBM/graph-db-insights/blob/master/notebooks/graphdb-insights.ipynb
-* Click the `Create Notebook` button.
-
+* Select the free Anaconda runtime.
+* Click the `Create` button.
+ 
 ![](doc/source/images/create_notebook.png)
 
 ### 3.1. Additional notes for the notebook.
-* Before uploading the `config.json` Watson Studio configuration file to Object storage, make sure you update the config file with
+* Before uploading the `config.json` configuration file to Object storage, make sure you update the config file with
   username and password that you have setup for orientdb in the first step `1. Deploy OrientDB on Kubernetes Cluster`
 
 ## 4. Add the data
@@ -126,7 +128,7 @@ and its `Files` tab.
 ## 6. Flow of the notebook
 The notebook has been divided into various sections with each section performing a specific task on the OrientDB.
 * `Setup` which deals with the installation of the OrientDB, importing the packages and libraries, adding the credentials of the files from object storage and loading them in the notebook for use.
-* `Utility Functions and Core functions` The notebook creates a graph with two node classes- `person` class and `movie` class. With person class as its attributes as- name, fblikes, role(actor/ director) and movie class as its attributes as - title, year, durationInMins, imdbRating, genre, plotKeywords, numCriticForReviews, movieFacebookLikes. There are two types of relationships involved in connecting the nodes, one is `worked_with`, which is between the two person nodes who have worked togther in the same movie and another one is `acted_in`, which between a person node and movie node for a person who have acted in a particular movie. The utility functions are written to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for creating database, creating graph as discussed, and get insights from the graph created.
+* `Utility Functions and Core functions` The notebook creates a graph with two node classes- `person` class and `movie` class. With person class as its attributes as: `name`, `fblikes`, `role(actor/ director)` and movie class as its attributes as: `title`, `year`, `durationInMins`, `imdbRating`, `genre`, `plotKeywords`, `numCriticForReviews`, `movieFacebookLikes`. There are two types of relationships involved in connecting the nodes, one is `worked_with`, which is between the two person nodes who have worked togther in the same movie and another one is `acted_in`, which between a person node and movie node for a person who have acted in a particular movie. The utility functions are written to keep a check on the duplicacy as `IF NOT EXISTS` is only valid for creating the properties in the OrientDB. Unlike in SQL, `IF NOT EXISTS` doesn't work with `create class` or `insert` statements in OrientDB. The core functions are for creating database, creating graph as discussed, and get insights from the graph created.
 * `Insights and Visualization` which focuses on  performing various operations on and get insights from the OrientDB database.
 
 
