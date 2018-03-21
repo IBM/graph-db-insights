@@ -79,8 +79,9 @@ Sign up for IBM's [Watson Studio](http://datascience.ibm.com/). By creating a pr
 
 ## 3. Create the notebook
 
-* Open [IBM Watson Studio](https://dataplatform.ibm.com).
-* Click on `Create notebook` to create a notebook.
+* In [Watson Studio](https://dataplatform.ibm.com), click on `Create notebook` to create a notebook.
+* Create a project if necessary, provisioning an object storage service if required.
+* In the `Assets` tab, select the `Create notebook` option.
 * Select the `From URL` tab.
 * Enter a name for the notebook.
 * Optionally, enter a description for the notebook.
