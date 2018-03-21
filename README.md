@@ -29,7 +29,7 @@ When the reader has completed this journey, they will understand how to:
 
 * [OrientDB](http://orientdb.com/orientdb/): A Multi-Model Open Source NoSQL DBMS.
 
-* [IBM Watson Studio](https://apsportal.ibm.com/analytics): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
+* [IBM Watson Studio](https://dataplatform.ibm.com): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
 
 * [Bluemix Object Storage](https://console.ng.bluemix.net/catalog/services/object-storage/?cm_sp=dw-bluemix-_-code-_-devcenter): A Bluemix service that provides an unstructured cloud data store to build and deliver cost effective apps and services with high reliability and fast speed to market.
 
@@ -77,7 +77,7 @@ Sign up for IBM's [Watson Studio](http://datascience.ibm.com/). By signing up fo
 
 ## 3. Create the notebook
 
-* Open [IBM Watson Studio](https://apsportal.ibm.com/analytics).
+* Open [IBM Watson Studio](https://dataplatform.ibm.com).
 * Use the menu on the top to select `Projects` and then `Default Project`.
 * Click on `Add notebooks` (upper right) to create a notebook.
 * Select the `From URL` tab.
