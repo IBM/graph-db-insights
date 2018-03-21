@@ -73,7 +73,7 @@ Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](http
 
 ## 2. Sign up for the Watson Studio
 
-Sign up for IBM's [Watson Studio](http://datascience.ibm.com/). By signing up for the Watson Studio, two services: ``Watson Studio-Spark`` and ``Watson Studio-ObjectStore`` will be created in your Bluemix account.
+Sign up for IBM's [Watson Studio](http://datascience.ibm.com/). By signing up for the Watson Studio, two services: ``Apache Spark`` and ``Object Storage`` will be created in your Bluemix account.
 
 ## 3. Create the notebook
 
