@@ -88,8 +88,6 @@ Sign up for IBM's [Watson Studio](http://datascience.ibm.com/). By creating a pr
 * Enter this Notebook URL: https://github.com/IBM/graph-db-insights/blob/master/notebooks/graphdb-insights.ipynb
 * Select the free Anaconda runtime.
 * Click the `Create` button.
- 
-![](doc/source/images/create_notebook.png)
 
 ### 3.1. Additional notes for the notebook.
 * Before uploading the `config.json` configuration file to Object storage, make sure you update the config file with
