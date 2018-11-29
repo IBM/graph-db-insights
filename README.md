@@ -189,3 +189,9 @@ To visualize the graph created by using the functions written in the notebook,
 ![](doc/source/images/worked_With.png)
 
 * You can follow this video tutorial on [OrientDB studio](https://www.youtube.com/watch?v=l-OVSjf-vk0&t=7s) created for the purpose of this notebook to demonstrate the results of the queries used in the tutorial.
+
+## License
+
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the Developer [Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
+
+[ASL FAQ link](http://www.apache.org/foundation/license-faq.html)#WhatDoesItMEAN
