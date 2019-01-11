@@ -29,15 +29,15 @@ When the reader has completed this journey, they will understand how to:
 
 ## Included components
 
-* [OrientDB](http://orientdb.com/orientdb/): A Multi-Model Open Source NoSQL DBMS.
+* [OrientDB](https://orientdb.com/why-orientdb/): A Multi-Model Open Source NoSQL DBMS.
 
-* [IBM Watson Studio](https://dataplatform.ibm.com): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
+* [IBM Watson Studio](https://dataplatform.cloud.ibm.com/): Analyze data using RStudio, Jupyter, and Python in a configured, collaborative environment that includes IBM value-adds, such as managed Spark.
 
-* [IBM Cloud Object Storage](https://console.ng.bluemix.net/catalog/services/object-storage/): An IBM Cloud service that provides an unstructured cloud data store to build and deliver cost effective apps and services with high reliability and fast speed to market.
+* [IBM Cloud Object Storage](https://cloud.ibm.com/catalog/services/cloud-object-storage/): An IBM Cloud service that provides an unstructured cloud data store to build and deliver cost effective apps and services with high reliability and fast speed to market.
 
-* [Jupyter Notebooks](http://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
+* [Jupyter Notebooks](https://jupyter.org/): An open-source web application that allows you to create and share documents that contain live code, equations, visualizations and explanatory text.
 
-* [Kubernetes Clusters](https://console.bluemix.net/containers-kubernetes/launch): an open-source system for automating deployment, scaling, and management of containerized applications.
+* [Kubernetes Clusters](https://console.bluemix.net/containers-kubernetes/catalog/cluster/create): an open-source system for automating deployment, scaling, and management of containerized applications.
 
 ## Featured technologies
 
@@ -47,7 +47,7 @@ When the reader has completed this journey, they will understand how to:
 
 ## Prerequisite
 
-Create a Kubernetes cluster with [IBM Cloud Container Service](https://console.bluemix.net/containers-kubernetes/launch) to deploy in cloud. Deploy OrientDB on Kubernetes Cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container).
+Create a Kubernetes cluster with [IBM Cloud Container Service](https://console.bluemix.net/containers-kubernetes/catalog/cluster/create) to deploy in cloud. Deploy OrientDB on Kubernetes Cluster using [Deploy OrientDB on Kubernetes](https://github.com/IBM/deploy-graph-db-container).
 
 # Watch the Video
 Watch this video to get an overview of this developer Journey.
@@ -60,7 +60,7 @@ described in detail below.
 
 
 1. [Deploy OrientDB on Kubernetes Cluster](#1-deploy-orientdb-on-kubernetes-cluster)
-1. [Sign up for the Watson Studio](#2-sign-up-for-the-data-science-experience)
+1. [Sign up for Watson Studio](#2-sign-up-for-watson-studio)
 1. [Create the notebook](#3-create-the-notebook)
 1. [Add the data](#4-add-the-data)
 1. [Update the notebook with service credentials](#5-update-the-notebook-with-service-credentials)
@@ -75,11 +75,11 @@ Deploy OrientDB on Kubernetes cluster using [Deploy OrientDB on Kubernetes](http
 
 ## 2. Sign up for Watson Studio
       
-Sign up for IBM's [Watson Studio](http://datascience.ibm.com/). By creating a project in Watson Studio a free tier ``Object Storage`` service will be created in your IBM Cloud account.
+Sign up for IBM's [Watson Studio](https://www.ibm.com/cloud/watson-studio). By creating a project in Watson Studio a free tier ``Object Storage`` service will be created in your IBM Cloud account.
 
 ## 3. Create the notebook
 
-* In [Watson Studio](https://dataplatform.ibm.com), click on `Create notebook` to create a notebook.
+* In [Watson Studio](https://dataplatform.cloud.ibm.com/), click on `Create notebook` to create a notebook.
 * Create a project if necessary, provisioning an object storage service if required.
 * In the `Assets` tab, select the `Create notebook` option.
 * Select the `From URL` tab.
@@ -192,6 +192,6 @@ To visualize the graph created by using the functions written in the notebook,
 
 ## License
 
-This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](http://www.apache.org/licenses/LICENSE-2.0.txt).
+This code pattern is licensed under the Apache Software License, Version 2.  Separate third party code objects invoked within this code pattern are licensed by their respective providers pursuant to their own separate licenses. Contributions are subject to the [Developer Certificate of Origin, Version 1.1 (DCO)](https://developercertificate.org/) and the [Apache Software License, Version 2](https://www.apache.org/licenses/LICENSE-2.0.txt).
 
-[Apache Software License (ASL) FAQ](http://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
+[Apache Software License (ASL) FAQ](https://www.apache.org/foundation/license-faq.html#WhatDoesItMEAN)
